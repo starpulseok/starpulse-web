@@ -5,3 +5,10 @@ const link = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
 document.getElementById("waTop").href = link;
 document.getElementById("waBottom").href = link;
+
+// Header sombra al scrollear
+const header = document.querySelector(".header");
+window.addEventListener("scroll", () => {
+  if (!header) return;
+  header.classList.toggle("scrolled", window.scrollY > 10);
+});
