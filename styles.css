@@ -32,13 +32,12 @@ body {
 
 .logo {
   height: 60px;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
 .logo:hover {
   transform: scale(1.05);
 }
-
 
 nav a {
   margin-left: 20px;
