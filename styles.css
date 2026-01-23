@@ -104,3 +104,7 @@ footer {
   padding: 40px;
   color: #666;
 }
+/* Evita que el header tape las secciones al navegar por anclas (#) */
+.section {
+  scroll-margin-top: 110px;
+}
