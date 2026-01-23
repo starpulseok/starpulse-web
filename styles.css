@@ -5,6 +5,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #fff;
   color: #111;
@@ -14,8 +18,21 @@ body {
 .header {
   position: sticky;
   top: 0;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+
+  /* Mejora 4: transición para sombra */
+  transition: box-shadow 0.25s ease;
+}
+
+/* Mejora 4: sombra solo cuando scrolleás (JS agrega .scrolled) */
+.header.scrolled {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
 
 .container {
@@ -28,6 +45,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 80px;
 }
 
 .logo {
@@ -39,11 +57,29 @@ body {
   transform: scale(1.05);
 }
 
+/* ===== Mejora 3: menú estilo Apple ===== */
 nav a {
   margin-left: 20px;
   text-decoration: none;
   color: #111;
   font-weight: 500;
+  position: relative;
+}
+
+/* subrayado animado */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #f5b700;
+  transition: width 0.25s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 .hero {
@@ -77,6 +113,9 @@ nav a {
 .section {
   padding: 100px 20px;
   text-align: center;
+
+  /* Evita que el header tape las secciones al navegar por anclas (#) */
+  scroll-margin-top: 110px;
 }
 
 .section.alt {
@@ -103,8 +142,4 @@ footer {
   text-align: center;
   padding: 40px;
   color: #666;
-}
-/* Evita que el header tape las secciones al navegar por anclas (#) */
-.section {
-  scroll-margin-top: 110px;
 }
