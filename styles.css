@@ -81,17 +81,19 @@ body{
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
   text-decoration:none;
 }
 
+/* Logo con borde suavizado */
 .logo{
-  height:46px;
+  height:48px;
   width:auto;
   display:block;
+
   padding:6px;
-  border-radius:14px;                 /* bordes suavizados */
-  background: rgba(255,255,255,0.95); /* visible sobre azul */
+  border-radius:14px;                 /* 🔹 bordes suaves */
+  background: rgba(255,255,255,0.95); /* 🔹 contraste sobre azul */
+
   transition: transform .25s ease;
 }
 
@@ -99,13 +101,10 @@ body{
   transform: scale(1.05);
 }
 
+/* ❌ Ocultamos el texto de la derecha */
 .brand-name{
-  color:#ffffff;
-  font-weight:800;
-  letter-spacing:.3px;
-  font-size:1.05rem;
+  display:none;
 }
-
 /* ===== Navegación ===== */
 .nav{
   display:flex;
