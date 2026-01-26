@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Star Pulse | Hardware & Armado de PCs</title>
-  <meta name="description" content="Star Pulse - Venta de hardware, periféricos y armado de PCs a medida." />
+  <title>Star Pulse | Hardware y PCs a medida</title>
+  <meta name="description" content="Star Pulse - Hardware, venta de componentes y armado de PCs a medida para particulares y empresas." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -14,72 +16,143 @@
 
 <header class="header">
   <div class="container header-inner">
-    <!-- Opción A: logo tal cual (solo redondeado por CSS) -->
-    <img src="assets/logo.png" class="logo" alt="Star Pulse">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" class="logo" alt="Star Pulse">
+      <span class="brand-name">Star Pulse</span>
+    </a>
 
-    <nav>
-      <a href="#quienes">Quiénes somos</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
+    <nav class="nav">
+      <a class="nav-link" href="#quienes">Quiénes somos</a>
+      <a class="nav-link" href="#servicios">Servicios</a>
+      <a class="nav-link" href="#contacto">Contacto</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Hardware pensado para vos</h1>
-  <p>Venta de productos y armado de PCs a medida para personas y empresas</p>
-  <a id="waTop" class="btn" href="#">Cotizar por WhatsApp</a>
-</section>
+<main id="top">
 
-<section id="quienes" class="section">
-  <h2>Quiénes somos</h2>
+  <!-- HERO -->
+  <section class="hero reveal">
+    <div class="container hero-inner">
+      <h1>Hardware pensado para vos</h1>
+      <p>Venta de componentes, periféricos y armado de PCs a medida para cada necesidad.</p>
 
-  <p>
-    En <strong>Star Pulse</strong> somos tu aliado tecnológico en <strong>San Francisco, Córdoba</strong>.
-    Nos enfocamos en <strong>venta de productos de computación</strong> y <strong>armado de PCs a medida</strong>,
-    con asesoramiento real y atención directa.
-  </p>
+      <div class="hero-actions">
+        <a id="waTop" class="btn" href="#">Contactar por WhatsApp</a>
+      </div>
 
-  <p>
-    Contamos con <strong>clientela empresarial desde hace años</strong> y llevamos ese mismo estándar profesional al
-    mercado minorista: rendimiento, confiabilidad y una relación <strong>precio–calidad</strong> bien pensada.
-  </p>
+      <div class="hero-badges">
+        <span class="badge">📍 San Francisco, Córdoba</span>
+        <span class="badge">🧠 Asesoramiento real</span>
+        <span class="badge">⚡ Respuesta rápida</span>
+      </div>
+    </div>
+  </section>
 
-  <p>
-    Nuestro objetivo es simple: <strong>que inviertas solo en lo que necesitás</strong> y tengas un equipo
-    que rinda de verdad para tu uso.
-  </p>
-</section>
+  <!-- QUIÉNES SOMOS -->
+  <section id="quienes" class="section reveal">
+    <div class="container">
+      <h2>Quiénes somos</h2>
 
-<section id="servicios" class="section alt">
-  <h2>Qué hacemos</h2>
+      <div class="text-block">
+        <p>
+          En <strong>Star Pulse</strong> somos tu aliado tecnológico en <strong>San Francisco, Córdoba</strong>.
+          Nos especializamos en la <strong>venta de hardware</strong> y en el <strong>armado de PCs a medida</strong>,
+          brindando asesoramiento claro y atención directa.
+        </p>
 
-  <div class="cards">
-    <div class="card">🖥️ Venta de productos informáticos</div>
-    <div class="card">🔧 Armado de PCs a medida</div>
-    <div class="card">🤝 Asesoramiento técnico</div>
+        <p>
+          Contamos con <strong>experiencia trabajando con clientela empresarial desde hace años</strong>,
+          aplicando criterios profesionales en armado de equipos, soporte y soluciones de hardware.
+          Ese mismo estándar lo llevamos hoy al mercado minorista.
+        </p>
+
+        <p>
+          Nuestro objetivo es simple: <strong>que inviertas solo en lo que necesitás</strong>
+          y obtengas un equipo confiable, equilibrado y preparado para rendir.
+        </p>
+      </div>
+
+      <!-- (Opcional) Bloques de confianza: si no lo querés, borrá este div -->
+      <div class="trust">
+        <div class="trust-item">
+          <div class="trust-title">✅ Asesoramiento honesto</div>
+          <div class="trust-desc">Te recomendamos lo que realmente te sirve según tu uso y presupuesto.</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-title">🧩 Armados equilibrados</div>
+          <div class="trust-desc">Compatibilidad, temperaturas y rendimiento, todo pensado para durar.</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-title">⚙️ Soporte y seguimiento</div>
+          <div class="trust-desc">Te acompañamos antes y después de la compra/armado.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section alt reveal">
+    <div class="container">
+      <h2>Qué hacemos</h2>
+
+      <div class="cards">
+        <div class="card">🖥️ Venta de productos informáticos</div>
+        <div class="card">🔧 Armado de PCs a medida</div>
+        <div class="card">🤝 Asesoramiento técnico</div>
+      </div>
+
+      <div class="cards cards-tight">
+        <div class="card">💾 Componentes (CPU, GPU, RAM, SSD)</div>
+        <div class="card">🖱️ Periféricos (teclados, mouse, monitores)</div>
+        <div class="card">🔌 Accesorios (cables, adaptadores, soportes)</div>
+      </div>
+
+      <!-- CTA strip (Opcional): si no lo querés, borralo -->
+      <div class="cta-strip">
+        <div>
+          <div class="cta-title">¿Querés que te recomendemos una PC?</div>
+          <div class="cta-desc">Contanos tu presupuesto y para qué la vas a usar. Te armamos una opción ideal.</div>
+        </div>
+        <a id="waReco" class="btn btn-lg" href="#">Pedir recomendación</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section reveal">
+    <div class="container">
+      <h2>Contacto</h2>
+
+      <div class="contact-card">
+        <div class="contact-left">
+          <div class="contact-kicker">Atención directa</div>
+          <div class="contact-title">WhatsApp Star Pulse</div>
+          <div class="contact-text">
+            Escribinos y contanos qué necesitás. Te ayudamos a elegir o armar el equipo adecuado.
+          </div>
+
+          <div class="contact-info">
+            <div class="info-row">📍 <span>San Francisco, Córdoba</span></div>
+            <div class="info-row">🕒 <span>Lunes a Viernes: 9:00 a 18:00 · Sábados: 9:00 a 12:00</span></div>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <a id="waBottom" class="btn btn-lg" href="#">Escribinos por WhatsApp</a>
+          <div class="mini">Respondemos a la brevedad.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Star Pulse</div>
+    <div class="footer-mini">Hardware • Armado de PCs • Asesoramiento</div>
   </div>
-
-  <div class="cards" style="margin-top: 18px;">
-    <div class="card">💾 Componentes… (CPU, GPU, RAM, SSD)</div>
-    <div class="card">🖱️ Periféricos… (teclados, mouse, monitores)</div>
-    <div class="card">🔌 Accesorios… (cables, adaptadores, soportes)</div>
-  </div>
-</section>
-
-<section id="contacto" class="section">
-  <h2>Contacto</h2>
-  <p>Atención directa por WhatsApp</p>
-
-  <p class="hours">
-    <strong>Horarios:</strong> Lunes a Viernes 9:00 a 18:00 · Sábados 9:00 a 12:00
-  </p>
-
-  <a id="waBottom" class="btn" href="#">Escribinos</a>
-</section>
-
-<footer>
-  © Star Pulse
 </footer>
 
 <script src="app.js"></script>
