@@ -161,5 +161,16 @@ footer {
   background: #fff;
   border-top: 1px solid rgba(0,0,0,0.06);
 }
+/* Contacto: separar texto del botón */
+#contacto p {
+  margin-top: 10px;
+  margin-bottom: 18px;
+}
+
+#contacto .btn {
+  display: inline-block;
+  margin-top: 6px;
+}
+
 
 
