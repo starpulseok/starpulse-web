@@ -1,39 +1,22 @@
 // ================== WHATSAPP ==================
 const PHONE = "5493564661474";
 
+// Mensaje del botón grande del HERO (más “vendedor”)
 const MSG_GENERAL =
-  "Hola Star Pulse 👋\n" +
-  "Quería consultar por hardware, periféricos o el armado de una PC a medida.\n\n" +
-  "📌 Uso del equipo: ...\n" +
-  "💰 Presupuesto aprox: ...\n" +
-  "🎮 / 💼 / 📚 (gaming, trabajo, estudio, empresa): ...\n\n" +
-  "Gracias!";
+  "Hola Star Pulse 👋\nQuería consultar por hardware, periféricos o el armado de una PC a medida.\nMi idea es: ...\nPresupuesto aprox: ...\nGracias!";
 
-const MSG_RECOMENDACION =
-  "Hola Star Pulse 👋\n" +
-  "Quiero pedir una recomendación de armado/upgrade.\n\n" +
-  "✅ Qué necesito: (PC nueva / upgrade)\n" +
-  "📌 Uso: ...\n" +
-  "💰 Presupuesto aprox: ...\n" +
-  "🖥️ Monitor/Resolución (si aplica): ...\n\n" +
-  "Gracias!";
-
+// Mensaje del botón de CONTACTO (más directo)
 const MSG_CONTACTO =
-  "Hola Star Pulse 👋\n" +
-  "Quisiera hacer una consulta rápida.\n\n" +
-  "Necesito: ...\n" +
-  "Gracias!";
+  "Hola Star Pulse 👋\nQuisiera hacer una consulta por WhatsApp. Gracias!";
 
 function waLink(message) {
   return `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
 }
 
 const waTop = document.getElementById("waTop");
-const waReco = document.getElementById("waReco");
 const waBottom = document.getElementById("waBottom");
 
 if (waTop) waTop.href = waLink(MSG_GENERAL);
-if (waReco) waReco.href = waLink(MSG_RECOMENDACION);
 if (waBottom) waBottom.href = waLink(MSG_CONTACTO);
 
 // ================== HEADER SOMBRA ==================
