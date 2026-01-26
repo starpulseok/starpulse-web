@@ -332,3 +332,16 @@ body{
     min-width:280px;
   }
 }
+/* === FIX separación botón vs badges (override final) === */
+.hero-actions{
+  margin-bottom: 48px !important; /* separa el botón de los badges */
+}
+
+.hero-badges{
+  margin-top: 0 !important; /* evita que se peguen por arriba */
+}
+
+/* por si el botón tiene algún margin raro en otro lado */
+#waTop.btn{
+  margin-bottom: 0 !important;
+}
