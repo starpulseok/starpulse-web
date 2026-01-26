@@ -4,8 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Star Pulse | Computación & Armado de PCs</title>
-  <meta name="description" content="Star Pulse - Venta de productos de computación y armado de PCs a medida" />
+  <meta name="description" content="Star Pulse - Venta de productos de computación y armado de PCs a medida en San Francisco, Córdoba." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -14,65 +16,138 @@
 
 <header class="header">
   <div class="container header-inner">
-    <img src="assets/logo.png" class="logo" alt="Star Pulse">
-    <nav>
-      <a href="#quienes">Quiénes somos</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
+    <a class="brand" href="#top" aria-label="Ir al inicio">
+      <img src="assets/logo.png" class="logo" alt="Star Pulse">
+      <span class="brand-name">Star Pulse</span>
+    </a>
+
+    <nav class="nav">
+      <a class="nav-link" href="#quienes">Quiénes somos</a>
+      <a class="nav-link" href="#servicios">Servicios</a>
+      <a class="nav-link" href="#contacto">Contacto</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Computación pensada para vos</h1>
-  <p>Soluciones informáticas y PCs armadas a medida para personas y empresas</p>
-  <a id="waTop" class="btn" href="#">Contactar por WhatsApp</a>
-</section>
+<main id="top">
 
-<section id="quienes" class="section">
-  <h2>Quiénes somos</h2>
+  <section class="hero reveal">
+    <div class="container hero-inner">
+      <h1>Computación pensada para vos</h1>
+      <p>Soluciones informáticas y PCs armadas a medida para personas y empresas.</p>
 
-  <p>
-    En <strong>Star Pulse</strong> somos tu aliado tecnológico en <strong>San Francisco, Córdoba</strong>.
-    Nos enfocamos en <strong>venta de productos de computación</strong> y <strong>armado de PCs a medida</strong>,
-    con asesoramiento real y atención directa.
-  </p>
+      <div class="hero-actions">
+        <a id="waTop" class="btn" href="#">Contactar por WhatsApp</a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
 
-  <p>
-    Ya trabajamos con <strong>clientela empresarial</strong> y llevamos ese mismo estándar profesional al
-    mercado minorista: rendimiento, confiabilidad y una relación <strong>precio–calidad</strong> bien pensada.
-  </p>
+      <div class="hero-badges">
+        <span class="badge">📍 San Francisco, Córdoba</span>
+        <span class="badge">⚡ Respuesta rápida</span>
+        <span class="badge">🧠 Asesoramiento real</span>
+      </div>
+    </div>
+  </section>
 
-  <p>
-    Nuestro objetivo es simple: <strong>que inviertas solo en lo que necesitás</strong> y tengas un equipo
-    que rinda de verdad para tu uso.
-  </p>
-</section>
+  <section id="quienes" class="section reveal">
+    <div class="container">
+      <h2>Quiénes somos</h2>
 
-<section id="servicios" class="section alt">
-  <h2>Qué hacemos</h2>
+      <div class="text-block">
+        <p>
+          En <strong>Star Pulse</strong> somos tu aliado tecnológico en <strong>San Francisco, Córdoba</strong>.
+          Nos enfocamos en <strong>venta de productos de computación</strong> y <strong>armado de PCs a medida</strong>,
+          con asesoramiento real y atención directa.
+        </p>
 
-  <div class="cards">
-    <div class="card">🖥️ Venta de productos informáticos</div>
-    <div class="card">🔧 Armado de PCs a medida</div>
-    <div class="card">🤝 Asesoramiento técnico</div>
+        <p>
+          Ya trabajamos con <strong>clientela empresarial</strong> y llevamos ese mismo estándar profesional al
+          mercado minorista: rendimiento, confiabilidad y una relación <strong>precio–calidad</strong> bien pensada.
+        </p>
+
+        <p>
+          Nuestro objetivo es simple: <strong>que inviertas solo en lo que necesitás</strong> y tengas un equipo
+          que rinda de verdad para tu uso.
+        </p>
+      </div>
+
+      <div class="trust">
+        <div class="trust-item">
+          <div class="trust-title">Criterio técnico</div>
+          <div class="trust-desc">Te recomendamos lo que sirve, no lo que sobra.</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-title">Armados a medida</div>
+          <div class="trust-desc">PC pensada para tu objetivo (trabajo / gaming / estudio).</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-title">Soporte cercano</div>
+          <div class="trust-desc">Atención directa por WhatsApp.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="section alt reveal">
+    <div class="container">
+      <h2>Qué hacemos</h2>
+
+      <div class="cards">
+        <div class="card">🖥️ Venta de productos informáticos</div>
+        <div class="card">🔧 Armado de PCs a medida</div>
+        <div class="card">🤝 Asesoramiento técnico</div>
+      </div>
+
+      <div class="cards cards-tight">
+        <div class="card">💾 Componentes (CPU, GPU, RAM, SSD)</div>
+        <div class="card">🖱️ Periféricos (teclados, mouse, monitores)</div>
+        <div class="card">🔌 Accesorios (cables, adaptadores, soportes)</div>
+      </div>
+
+      <div class="cta-strip">
+        <div>
+          <div class="cta-title">¿Querés una PC para tu objetivo?</div>
+          <div class="cta-desc">Contame presupuesto + para qué la usás y te propongo una configuración.</div>
+        </div>
+        <a id="waServices" class="btn" href="#">Pedir recomendación</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section reveal">
+    <div class="container">
+      <h2>Contacto</h2>
+
+      <div class="contact-card">
+        <div class="contact-left">
+          <div class="contact-kicker">Atención directa por WhatsApp</div>
+          <div class="contact-title">Respondemos rápido</div>
+          <div class="contact-text">
+            Escribinos con: <strong>presupuesto</strong>, <strong>uso</strong> (trabajo/gaming/estudio) y si ya tenés
+            componentes. Te guiamos paso a paso.
+          </div>
+
+          <div class="contact-info">
+            <div class="info-row">📍 <span>San Francisco, Córdoba</span></div>
+            <div class="info-row">🕒 <span>Lun a Sáb — 9:00 a 20:00</span></div>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <a id="waBottom" class="btn btn-lg" href="#">Escribinos por WhatsApp</a>
+          <div class="mini">Te respondemos a la brevedad.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Star Pulse</div>
+    <div class="footer-mini">Computación • Armado de PCs • Asesoramiento</div>
   </div>
-
-  <div class="cards" style="margin-top: 18px;">
-    <div class="card">💾 Componentes (CPU, GPU, RAM, SSD)</div>
-    <div class="card">🖱️ Periféricos (teclados, mouse, monitores)</div>
-    <div class="card">🔌 Accesorios (cables, adaptadores, soportes)</div>
-  </div>
-</section>
-
-<section id="contacto" class="section">
-  <h2>Contacto</h2>
-  <p>Atención directa por WhatsApp</p>
-  <a id="waBottom" class="btn" href="#">Escribinos</a>
-</section>
-
-<footer>
-  © Star Pulse
 </footer>
 
 <script src="app.js"></script>
