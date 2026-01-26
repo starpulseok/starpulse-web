@@ -345,3 +345,14 @@ body{
 #waTop.btn{
   margin-bottom: 0 !important;
 }
+/* === Ajuste fino botón WhatsApp en Contacto === */
+.contact-right{
+  align-items: flex-start; /* evita que se estire */
+}
+
+#contacto .btn{
+  width: auto;            /* clave: no ocupa todo el ancho */
+  max-width: 260px;       /* límite prolijo */
+  padding: 14px 26px;     /* balance visual */
+  text-align: center;
+}
