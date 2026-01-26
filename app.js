@@ -1,28 +1,20 @@
 // ================== WHATSAPP ==================
 const PHONE = "5493564661474";
 
-// Mensajes según intención
 const MSG_GENERAL =
-  "Hola Star Pulse 👋\nQuería hacer una consulta general sobre productos o armado de PCs. Gracias.";
-
-const MSG_RECOMENDACION =
-  "Hola Star Pulse 👋\nQuiero una recomendación para armar una PC.\nPresupuesto aproximado: ___\nUso principal: (trabajo / gaming / estudio / otro).";
+  "Hola Star Pulse 👋\nQuería consultar por hardware, periféricos o el armado de una PC a medida. Gracias.";
 
 const MSG_CONTACTO =
-  "Hola Star Pulse, ¿cómo están?\nQuisiera comunicarme con ustedes por una consulta. Gracias.";
+  "Hola Star Pulse 👋\nQuisiera hacer una consulta. Gracias.";
 
-// Función para armar link
 function waLink(message) {
   return `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
 }
 
-// Botones
-const waTop = document.getElementById("waTop");         // Hero
-const waServices = document.getElementById("waServices"); // Servicios
-const waBottom = document.getElementById("waBottom");  // Contacto
+const waTop = document.getElementById("waTop");
+const waBottom = document.getElementById("waBottom");
 
 if (waTop) waTop.href = waLink(MSG_GENERAL);
-if (waServices) waServices.href = waLink(MSG_RECOMENDACION);
 if (waBottom) waBottom.href = waLink(MSG_CONTACTO);
 
 // ================== HEADER SOMBRA ==================
