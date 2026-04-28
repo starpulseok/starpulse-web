@@ -490,3 +490,7 @@ body{
   border:1px solid rgba(255,255,255,0.1);
   color:#e2e8f0;
 }
+/* ================= STARPULSE ================= */
+#starpulse{
+  background: linear-gradient(to bottom, #ffffff, #f8fafc);
+}
