@@ -306,6 +306,14 @@ body{
   box-shadow: var(--shadow);
   text-align:left;
 }
+.cards{
+  margin-top: 40px;
+}
+.card{
+  min-width:260px;
+  padding:22px;
+  font-weight:500;
+}
 
 /* ================= CONTACTO ================= */
 #contacto{
