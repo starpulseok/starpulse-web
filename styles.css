@@ -5,12 +5,10 @@
   --bg:#ffffff;
   --alt:#f8fafc;
 
-  /* Azul tecnológico */
   --primary:#2563eb;
   --primary-dark:#1e40af;
   --primary-light:#60a5fa;
 
-  /* Amarillo marca */
   --brand:#f5b700;
 
   --border: rgba(0,0,0,0.08);
@@ -73,26 +71,66 @@ body{
   align-items:center;
   justify-content:space-between;
   min-height: 76px;
+  gap:16px;
+}
+
+/* ================= BRAND GROUP ================= */
+.brand-group{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap: 10px;
   text-decoration:none;
-  color:#fff;
+}
+
+/* Star Pulse principal */
+.brand-main{
+  background:#fff;
+  padding:6px 14px;
+  border-radius:999px;
+  box-shadow:0 8px 22px rgba(0,0,0,.16);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.brand-main:hover{
+  transform:translateY(-1px);
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
 }
 
 .logo{
-  height:52px;
+  height:42px;
   width:auto;
+  display:block;
+  border-radius:999px;
+}
+
+/* Kolossus asociado */
+.brand-linked{
+  color:#fff;
+  font-weight:700;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:background .2s ease, transform .2s ease;
+}
+
+.brand-linked:hover{
+  background:rgba(255,255,255,.22);
+  transform:translateY(-1px);
 }
 
 .brand-name{
-  color:#fff;
-  font-weight:700;
+  display:none;
 }
 
+/* ================= NAV ================= */
 .nav{
   display:flex;
   gap:18px;
@@ -135,7 +173,6 @@ body{
   text-align:center;
 }
 
-/* ⭐ ESTRELLA GRANDE Y MÁS ARRIBA */
 .hero-logo{
   display:block;
   margin: -50px auto 36px;
@@ -159,10 +196,9 @@ body{
 }
 
 .hero-actions{
-  margin-bottom: 26px;
+  margin-bottom: 48px;
 }
 
-/* ===== BADGES ===== */
 .hero-badges{
   display:flex;
   justify-content:center;
@@ -267,7 +303,7 @@ body{
   padding: 26px;
 
   display:grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.6fr auto;
   gap: 22px;
   align-items:center;
   text-align:left;
@@ -293,13 +329,19 @@ body{
 .contact-right{
   display:flex;
   flex-direction:column;
-  align-items:flex-start;
+  align-items:center;
   gap:12px;
+}
+
+#contacto .btn{
+  width:auto;
+  white-space:nowrap;
 }
 
 .mini{
   font-size:.95rem;
   color:var(--muted);
+  text-align:center;
 }
 
 /* ================= FOOTER ================= */
@@ -313,6 +355,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:12px;
 }
 
 /* ================= REVEAL ================= */
@@ -332,6 +375,10 @@ body{
   .contact-card{
     grid-template-columns:1fr;
   }
+
+  .contact-right{
+    align-items:flex-start;
+  }
 }
 
 @media (max-width:700px){
@@ -342,15 +389,30 @@ body{
 
   .header-inner{
     flex-direction:column;
-    gap:10px;
+    gap:12px;
   }
 
-  .brand-name{
-    display:none;
+  .brand-group{
+    justify-content:center;
+    flex-wrap:wrap;
   }
 
   .nav{
     justify-content:center;
     flex-wrap:wrap;
+  }
+
+  .brand-linked{
+    padding:8px 14px;
+    font-size:.95rem;
+  }
+
+  .logo{
+    height:38px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    text-align:center;
   }
 }
