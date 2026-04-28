@@ -443,3 +443,50 @@ body{
     text-align:center;
   }
 }
+/* ================= HERO BOTONES ================= */
+.hero-actions-grid{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top: 10px;
+}
+
+.btn-secondary{
+  background:#fff;
+  color: var(--text);
+  border:1px solid var(--border);
+}
+
+.btn-ghost{
+  background: transparent;
+  color: var(--text);
+  border:1px dashed var(--border);
+}
+
+/* ================= KOLOSSUS ================= */
+.kolossus-section{
+  background: #0f172a;
+  color:#fff;
+}
+
+.kolossus-section h2{
+  color:#fff;
+}
+
+.subtitle{
+  color:#94a3b8;
+  margin-bottom: 20px;
+}
+
+.kolossus-section .text-block{
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#e2e8f0;
+}
+
+.kolossus-section .card{
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  color:#e2e8f0;
+}
