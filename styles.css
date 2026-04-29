@@ -510,3 +510,6 @@ body{
   font-weight:600;
   box-shadow: var(--shadow);
 }
+.logos{
+  margin-bottom: 30px;
+}
