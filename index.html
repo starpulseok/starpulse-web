@@ -18,11 +18,11 @@
   <div class="container header-inner">
 
     <div class="brand-group">
-      <a class="brand brand-main" href="#top" aria-label="Ir al inicio">
+      <a class="brand brand-main" href="#top">
         <img src="assets/logo.jpg" class="logo" alt="Star Pulse">
       </a>
 
-      <a class="brand brand-linked" href="#kolossus">
+      <a class="brand brand-linked" href="#kolossus" onclick="scrollToKolossus(event)">
         Kolossus
       </a>
     </div>
@@ -30,7 +30,7 @@
     <nav class="nav">
       <a class="nav-link" href="#quienes">Quiénes somos</a>
       <a class="nav-link" href="#servicios">Servicios</a>
-      <a class="nav-link" href="#kolossus">Kolossus</a>
+      <a class="nav-link" href="#kolossus" onclick="scrollToKolossus(event)">Kolossus</a>
       <a class="nav-link" href="#contacto">Contacto</a>
     </nav>
 
@@ -42,29 +42,18 @@
   <!-- ================= STAR PULSE ================= -->
   <section id="starpulse">
 
-    <!-- HERO -->
     <section class="hero reveal">
       <div class="container hero-inner">
 
-        <img src="assets/hero-logo.png" alt="Star Pulse" class="hero-logo">
+        <img src="assets/hero-logo.png" class="hero-logo">
 
         <h1>Hardware pensado para vos</h1>
-       <p>Armamos PCs a medida y te ayudamos a elegir el equipo ideal,
-          sin que gastes de más.</p>
+        <p>Armamos PCs a medida y te ayudamos a elegir el equipo ideal, sin que gastes de más.</p>
+
         <div class="hero-actions hero-actions-grid">
-
-          <a id="waPC" class="btn btn-primary" href="#">
-            🖥️ Armar mi PC
-          </a>
-
-          <a id="waAsesor" class="btn btn-secondary" href="#">
-            🧠 Necesito asesoramiento
-          </a>
-
-          <a id="waProducto" class="btn btn-ghost" href="#">
-            🔎 Consultar producto
-          </a>
-
+          <a class="btn btn-primary">🖥️ Armar mi PC</a>
+          <a class="btn btn-secondary">🧠 Necesito asesoramiento</a>
+          <a class="btn btn-ghost">🔎 Consultar producto</a>
         </div>
 
         <div class="hero-badges">
@@ -76,37 +65,26 @@
       </div>
     </section>
 
-    <!-- QUIÉNES SOMOS -->
     <section id="quienes" class="section reveal">
       <div class="container">
         <h2>Quiénes somos</h2>
 
         <div class="text-block">
-          <p>
-            En <strong>Star Pulse</strong> somos tu aliado tecnológico en <strong>San Francisco, Córdoba</strong>.
-            Nos especializamos en la <strong>venta de hardware</strong> y en el <strong>armado de PCs a medida</strong>.
-          </p>
-
-          <p>
-            Contamos con <strong>experiencia trabajando con clientela empresarial</strong>, aplicando criterios profesionales en cada equipo.
-          </p>
-
-          <p>
-            Nuestro objetivo es simple: <strong>que inviertas solo en lo que necesitás</strong>.
-          </p>
+          <p><strong>Star Pulse</strong> es tu aliado tecnológico en San Francisco, Córdoba.</p>
+          <p>Nos especializamos en hardware y armado de PCs a medida.</p>
+          <p><strong>Invertís solo en lo que necesitás.</strong></p>
         </div>
       </div>
     </section>
 
-    <!-- SERVICIOS -->
     <section id="servicios" class="section alt reveal">
       <div class="container">
         <h2>Qué hacemos</h2>
 
         <div class="cards">
-          <div class="card">🖥️ Venta de productos informáticos</div>
-          <div class="card">🔧 Armado de PCs a medida</div>
-          <div class="card">🤝 Asesoramiento técnico</div>
+          <div class="card">🖥️ Venta de productos</div>
+          <div class="card">🔧 Armado de PCs</div>
+          <div class="card">🤝 Asesoramiento</div>
         </div>
 
         <div class="cards cards-tight">
@@ -121,52 +99,36 @@
 
   <!-- ================= KOLOSSUS ================= -->
   <section id="kolossus" class="section kolossus-section reveal">
-
     <div class="container">
 
       <h2>Kolossus</h2>
       <p class="subtitle">Soluciones IT para empresas</p>
 
       <div class="text-block">
-        <p>
-          <strong>Kolossus</strong> es nuestra unidad especializada en tecnología empresarial.
-        </p>
-
-        <p>
-          Brindamos soluciones completas en infraestructura, redes, seguridad y soporte IT para empresas.
-        </p>
-        <p>
-          A través de Kolossus trabajamos con empresas en proyectos de infraestructura,
-          soporte IT y soluciones tecnológicas, aplicando experiencia real en entornos productivos.
-        </p>
+        <p><strong>Kolossus</strong> es nuestra unidad empresarial.</p>
+        <p>Infraestructura, redes, seguridad y soporte IT.</p>
       </div>
-      <a href=https://linktr.ee/kolossusti target="_blank" class="btn btn-secondary kolossus-btn">
-          Ver sitio completo de Kolossus
-      </a>
-       <h3>Empresas y proyectos</h3>
 
-    <div class="logos">
-      <div class="logo-card">Cavour</div>
-      <div class="logo-card">Amé</div>
-      <div class="logo-card">Pinturerías Ariel</div>
-    </div>
+      <a href="https://linktr.ee/kolossusti" target="_blank" class="btn btn-secondary kolossus-btn">
+        Ver sitio completo de Kolossus
+      </a>
+
+      <h3>Empresas y proyectos</h3>
+
+      <div class="logos">
+        <div class="logo-card">Cavour</div>
+        <div class="logo-card">Amé</div>
+        <div class="logo-card">Pinturerías Ariel</div>
+      </div>
 
       <div class="cards">
-        <div class="card">🖧 Redes e infraestructura</div>
+        <div class="card">🖧 Redes</div>
         <div class="card">🗄️ Servidores</div>
-        <div class="card">🔐 Seguridad informática</div>
-      </div>
-
-      <div class="cards cards-tight">
-        <div class="card">💼 Soporte empresarial</div>
-        <div class="card">📊 Licenciamiento</div>
-        <div class="card">🏢 Soluciones corporativas</div>
+        <div class="card">🔐 Seguridad</div>
       </div>
 
     </div>
-
   </section>
-
 
   <!-- ================= CONTACTO ================= -->
   <section id="contacto" class="section reveal">
@@ -174,22 +136,12 @@
       <h2>Contacto</h2>
 
       <div class="contact-card">
-        <div class="contact-left">
-          <div class="contact-title">Atención directa por WhatsApp</div>
-
-          <div class="contact-text">
-            Escribinos y contanos qué necesitás.
-          </div>
-
-          <div class="contact-info">
-            <div class="info-row">📍 San Francisco, Córdoba</div>
-            <div class="info-row">🕒 Lunes a Viernes: 9:00 a 18:00</div>
-          </div>
+        <div>
+          <div>Atención por WhatsApp</div>
+          <div>San Francisco, Córdoba</div>
         </div>
 
-        <div class="contact-right">
-          <a id="waBottom" class="btn btn-lg" href="#">Escribinos</a>
-        </div>
+        <a class="btn btn-lg">Escribinos</a>
       </div>
 
     </div>
@@ -199,12 +151,26 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div>© <span id="year"></span> Star Pulse</div>
-    <div class="footer-mini">Hardware • Armado de PCs • Asesoramiento</div>
+    <div>© 2026 Star Pulse</div>
   </div>
 </footer>
+
+<!-- 🔥 SOLUCIÓN DEFINITIVA SCROLL -->
+<script>
+function scrollToKolossus(e){
+  e.preventDefault();
+
+  const section = document.getElementById("kolossus");
+
+  const y = section.offsetTop - 110;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth"
+  });
+}
+</script>
 
 <script src="app.js"></script>
 </body>
 </html>
-
