@@ -16,7 +16,7 @@
   --radius: 18px;
 
   --container: 1100px;
-  --headerOffset: 130px;
+  --headerOffset: 90px;
 }
 
 *{
@@ -521,6 +521,6 @@ body{
 .kolossus-btn{
   margin: 25px 0 15px;
 }
-section{
-  scroll-margin-top: 100px;
+#kolossus{
+  scroll-margin-top: var(--headerOffset);
 }
