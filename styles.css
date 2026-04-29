@@ -518,3 +518,22 @@ body{
   border:1px solid rgba(255,255,255,0.1);
   color:#e2e8f0;
 }
+/* ===== FIX KOLOSSUS LOGOS ===== */
+.logos{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+  margin:20px 0 30px;
+}
+
+.logo-card{
+  background:#ffffff;
+  color:#0f172a;
+  padding:12px 20px;
+  border-radius:12px;
+  font-weight:600;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+  user-select:none; /* evita ese azul al seleccionar */
+}
