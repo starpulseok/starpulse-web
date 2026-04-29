@@ -521,3 +521,6 @@ body{
 .kolossus-btn{
   margin: 25px 0 15px;
 }
+section{
+  scroll-margin-top: 100px;
+}
