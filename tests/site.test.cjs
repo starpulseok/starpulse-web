@@ -52,17 +52,15 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           assert.match(await page.locator(":focus").innerText(), /Saltar al contenido/);
           for (const image of await page.locator("img[loading=lazy]:visible").all()) {
             await image.scrollIntoViewIfNeeded({ timeout: 5000 });
-            const src = await image.getAttribute("src");
-            await page.waitForFunction(source =>
-              [...document.images].filter(img => img.getAttribute("src") === source)
-                .some(img => img.complete && img.naturalWidth > 0),
-              src, { timeout: 8000 });
+            const handle = await image.elementHandle();
+            await page.waitForFunction(img => img.complete && img.naturalWidth > 0, handle, { timeout: 8000 });
+            await handle.dispose();
           }
-          assert(await page.evaluate(() =>
-            document.documentElement.scrollWidth <= innerWidth &&
-            [...document.images].filter(img => img.getClientRects().length).every(img => img.complete && img.naturalWidth > 0) &&
-            [...document.querySelectorAll('a[href^="#"]')].every(a => document.getElementById(a.hash.slice(1)))
-          ));
+          await page.waitForFunction(() => [...document.images].filter(img => img.getClientRects().length)
+            .every(img => img.complete && img.naturalWidth > 0), null, { timeout: 8000 });
+          assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), brand + ": ancho de página");
+          assert(await page.evaluate(() => [...document.querySelectorAll('a[href^="#"]')]
+            .every(a => document.getElementById(a.hash.slice(1)))), brand + ": destino de anclas");
           if (brand === "Star Pulse") {
             assert.equal(await page.locator(".profile-card").count(), 2);
             assert.equal(await page.locator(".activity-card").count(), 10);
