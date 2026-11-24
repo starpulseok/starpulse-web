@@ -28,3 +28,4 @@
 .guide label { grid-template-columns:minmax(0,1fr); }
 .guide select { max-width:100%; }
 @media(max-width:46rem) { .guide { grid-template-columns:minmax(0,1fr); } }
+.guide-card { overflow:hidden; }
