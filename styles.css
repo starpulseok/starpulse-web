@@ -386,13 +386,13 @@ body{
 }
 
 /* ================= REVEAL ================= */
-.reveal{
+.reveal-enabled .reveal{
   opacity:0;
   transform: translateY(18px);
   transition: opacity .6s ease, transform .6s ease;
 }
 
-.reveal.show{
+.reveal-enabled .reveal.show{
   opacity:1;
   transform:none;
 }
