@@ -50,7 +50,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           assert.equal(await page.locator('script[src*="/gsap/"]').count(), 0);
           await page.keyboard.press("Tab");
           assert.match(await page.locator(":focus").innerText(), /Saltar al contenido/);
-          for (const image of await page.locator("img[loading=lazy]").all()) {
+          for (const image of await page.locator("img[loading=lazy]:visible").all()) {
             await image.scrollIntoViewIfNeeded({ timeout: 5000 });
             const src = await image.getAttribute("src");
             await page.waitForFunction(source =>
@@ -60,9 +60,58 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           }
           assert(await page.evaluate(() =>
             document.documentElement.scrollWidth <= innerWidth &&
-            [...document.images].every(img => img.complete && img.naturalWidth > 0) &&
+            [...document.images].filter(img => img.getClientRects().length).every(img => img.complete && img.naturalWidth > 0) &&
             [...document.querySelectorAll('a[href^="#"]')].every(a => document.getElementById(a.hash.slice(1)))
           ));
+          if (brand === "Star Pulse") {
+            assert.equal(await page.locator(".profile-card").count(), 2);
+            assert.equal(await page.locator(".activity-card").count(), 10);
+            for (const profile of await page.locator(".profile-card").all()) {
+              await profile.focus();
+              await page.keyboard.press("Enter");
+              const group = page.locator(await profile.getAttribute("href"));
+              for (const activity of await group.locator(".activity-card").all()) {
+                await activity.click();
+                const result = page.locator(await activity.getAttribute("href"));
+                assert(await result.isVisible());
+                assert.equal(await result.locator(".alternatives h5").count(), 2);
+              }
+            }
+            await page.locator(".consult summary").click();
+            if (javaScriptEnabled) {
+              await page.getByRole("button", {name:"Cotización",exact:true}).click();
+              const draft = page.locator(".consult textarea");
+              assert.match(await draft.inputValue(), /cotización.*Creación de contenido/);
+              await draft.fill("Mi consulta & programas");
+              assert.equal(new URL(await page.locator("#explore-wa").getAttribute("href")).searchParams.get("text"),await draft.inputValue());
+              assert.equal(new URL(await page.locator("#explore-email").getAttribute("href")).searchParams.get("body"),await draft.inputValue());
+            }
+            assert(await page.locator("#explore-email").isVisible());
+          } else if (javaScriptEnabled) {
+            const modes = ["Necesidad puntual", "Acompañamiento tecnológico continuo"];
+            for (const mode of modes) {
+              await page.locator("#mode").selectOption(mode);
+              await page.locator("#need").selectOption({ index: 1 });
+              await page.locator("#meeting").check();
+              await page.locator("#review").click();
+              const draft = page.locator("#draft");
+              const text = await draft.inputValue();
+              assert.match(text, /coordinar una reunión/);
+              assert(text.includes(mode));
+              await draft.fill("");
+              assert.equal(await page.locator("#whatsapp").getAttribute("href"), null);
+              await draft.fill("Consulta editada & revisada");
+              const mail = new URL(await page.locator("#email").getAttribute("href"));
+              assert.equal(mail.pathname, "martinjoberto@kolossus.com.ar");
+              assert.equal(mail.searchParams.get("body"), await draft.inputValue());
+              const chat = new URL(await page.locator("#whatsapp").getAttribute("href"));
+              assert.equal(chat.searchParams.get("text"), await draft.inputValue());
+              await page.locator("#back").click();
+            }
+          } else {
+            assert(await page.locator(".guide-card").isHidden());
+            assert(await page.locator(".guide noscript a").first().isVisible());
+          }
           const first = page.locator('nav a[href^="#"]').first();
           await first.click();
           if (javaScriptEnabled) {
@@ -92,13 +141,13 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(page.url(), base + "kolossus/index.html");
           } else {
             assert.equal(await page.locator('a[href*="linktr.ee"]').getAttribute("href"), "https://linktr.ee/kolossusti");
-            assert.equal(await page.locator("details.service").count(), 6);
-            assert.equal(await page.locator('a[href^="mailto:"]').count(), 2);
+            assert.equal(await page.locator("details.service").count(), 4);
+            assert.equal(await page.locator('.people a[href^="mailto:"]').count(), 2);
             for (const number of ["5493564661474", "5493564663933"]) {
-              const href = await page.locator('a[href^="https://wa.me/' + number + '"]').getAttribute("href");
+              const href = await page.locator('.people a[href^="https://wa.me/' + number + '"]').getAttribute("href");
               assert(new URL(href).searchParams.get("text").includes("empresa"));
             }
-            assert(await page.getByText("Línea en desarrollo").isVisible());
+            assert.doesNotMatch(await page.locator("main").innerText(), /inteligencia artificial|automatización|transformación digital/i);
             await page.locator("summary").first().focus();
             await page.keyboard.press("Enter");
             assert.equal(await page.locator("details[open]").count(), 1);

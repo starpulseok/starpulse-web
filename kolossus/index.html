@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KOLOSSUS Consultoría en TI | IT infra+consult</title>
-  <meta name="description" content="Consultoría, infraestructura y continuidad operativa para empresas. Más de 20 años de trayectoria en San Francisco, Córdoba, Argentina.">
+  <meta name="description" content="Soporte empresarial, gestión de activos, consultoría y continuidad operativa. Más de 20 años de trayectoria en San Francisco, Córdoba, Argentina.">
   <meta property="og:title" content="KOLOSSUS Consultoría en TI | IT infra+consult">
-  <meta property="og:description" content="Consultoría, infraestructura y continuidad operativa para empresas. Más de 20 años de trayectoria en San Francisco, Córdoba, Argentina.">
+  <meta property="og:description" content="Soporte empresarial, gestión de activos, consultoría y continuidad operativa. Más de 20 años de trayectoria en San Francisco, Córdoba, Argentina.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="stylesheet" href="../experience.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../guide.css">
 </head>
 <body id="inicio">
 <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -26,16 +27,31 @@
 <main id="contenido">
   <section class="hero"><div class="wrap hero-grid">
     <div><p class="eyebrow">KOLOSSUS Consultoría en TI</p>
-      <h1>Infraestructura<br>y <em>consultoría.</em></h1>
-      <p class="intro">Tecnología para que tu empresa opere con eficiencia, continuidad y tranquilidad.</p>
-      <div class="actions"><a class="button" href="#servicios">Explorar servicios ↓</a><a href="#contacto">Contactar al equipo ↗</a></div>
+      <h1>Soporte y<br><em>gestión IT.</em></h1>
+      <p class="intro">Mantenimiento preventivo y correctivo, redes y servidores para sostener la operación de tu empresa.</p>
+      <div class="actions"><a class="button" href="#orientador">Orientar mi consulta ↓</a><a href="#contacto">Contactar al equipo ↗</a></div>
     </div>
     <div class="blueprint"><img src="logo.webp" alt="KOLOSSUS. IT infra+consult" width="450" height="600" fetchpriority="high"></div>
   </div></section>
+  <section class="wrap guide" id="orientador" data-brand="KOLOSSUS" data-email="martinjoberto@kolossus.com.ar">
+    <div class="guide-lead"><h2>¿Qué necesita tu empresa?</h2><p>Elegí cómo trabajar con nosotros según lo que necesita tu operación.</p><dl class="modes"><dt>Solución puntual</dt><dd>Para resolver un problema concreto, como una falla de red o la revisión de un servidor.</dd><dt>Acompañamiento tecnológico continuo</dt><dd>Para organizar el mantenimiento y la gestión de equipos en el tiempo. Alcance y condiciones a acordar.</dd></dl><a href="#contacto">Ir al contacto directo ↓</a></div>
+    <div class="guide-card" hidden><div class="guide-fields"><label>Modalidad de trabajo<select id="mode"><option>Necesidad puntual</option><option>Acompañamiento tecnológico continuo</option><option>Necesito orientación</option></select></label><label>¿Qué situación quieren resolver?<select id="need"><option>Equipos con fallas o mantenimiento pendiente</option><option>Problemas de red o servidores</option><option>Seguridad, respaldos o recuperación</option><option>Inventario y gestión de activos</option><option>Planificación y consultoría</option></select></label><label>¿A quién afecta?<select id="impact"><option>A un puesto</option><option>A un área</option><option>A toda la empresa</option><option>Todavía lo estamos evaluando</option></select></label>
+    <label class="meeting"><input type="checkbox" id="meeting"> Quiero solicitar una reunión para conversar</label>
+    <button type="button" id="review">Revisar mi consulta →</button></div>
+    <div class="guide-review" hidden><h3 tabindex="-1">Revisá tu consulta</h3><p id="suggestion"></p>
+    <label>Mensaje editable<textarea id="draft" rows="7" maxlength="1600"></textarea></label>
+    <p>Elegí un canal para abrir el borrador. El envío lo confirmás en tu aplicación.</p>
+    <div class="channels"><a id="whatsapp">Abrir WhatsApp ↗</a><a id="email">Preparar correo ↗</a></div>
+    <button class="back" type="button" id="back">← Cambiar respuestas</button></div></div>
+    <noscript><p>Contanos tu necesidad directamente por <a href="https://wa.me/5493564661474">WhatsApp</a> o por <a href="mailto:martinjoberto@kolossus.com.ar">correo electrónico</a>.</p></noscript>
+  </section>
   <section class="mission"><div class="wrap dual">
     <h2>Nuestra misión</h2><blockquote>“Acompañar a nuestros clientes en el éxito de su negocio, ayudando a administrar eficientemente la infraestructura tecnológica de su empresa.”</blockquote>
   </div></section>
   <section class="section wrap" id="servicios"><h2>Servicios de TI</h2><div class="bento">
+      <details class="service"><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h18v12H3zM7 20h10M12 16v4M5 11h3l2-4 3 6 2-3h4"/></svg><span>Soporte y gestión IT</span></summary>
+        <ul><li>Mantenimiento preventivo y correctivo</li><li>Monitoreo de infraestructura</li><li>Administración de activos</li><li>Licenciamiento de software</li><li>Ventas corporativas de equipamiento</li></ul>
+      </details>
       <details class="service"><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 19h18M5 16l5-6 4 3 5-8"/></svg><span>Consultoría e ingeniería</span></summary>
         <ul><li>Diagnóstico tecnológico</li><li>Planificación estratégica</li><li>Cuadro de Situación Tecnológico</li><li>Asesoramiento integral</li></ul>
       </details>
@@ -45,16 +61,8 @@
       <details class="service"><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2l8 3v6q0 6-8 11-8-5-8-11V5zM8 12l3 3 5-6"/></svg><span>Ciberseguridad y continuidad operativa</span></summary>
         <ul><li>Protección de infraestructura</li><li>Control de acceso</li><li>Certificados digitales y HTTPS/TLS</li><li>Respaldos y recuperación de información</li><li>Prevención de incidentes</li></ul>
       </details>
-      <details class="service"><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 5h12v11H3zM8 19h12V9"/></svg><span>Transformación digital</span></summary>
-        <ul><li>Implementación y migración de Google Workspace</li><li>Organización de información empresarial</li><li>Gestión documental</li><li>Administración de usuarios y permisos</li><li>Herramientas colaborativas</li></ul>
-      </details>
-      <details class="service"><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h5v5H4zM15 14h5v5h-5zM9 7h8v7M7 10v7h8"/></svg><span>Inteligencia artificial y automatización</span><small>Línea en desarrollo</small></summary>
-        <ul><li>Relevamiento y optimización de procesos</li><li>Evaluación e integración de herramientas</li><li>Soluciones con inteligencia artificial</li><li>Gestión del conocimiento</li></ul>
-      </details>
-      <details class="service"><summary><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h18v12H3zM7 20h10M12 16v4M5 11h3l2-4 3 6 2-3h4"/></svg><span>Soporte y gestión IT</span></summary>
-        <ul><li>Mantenimiento preventivo y correctivo</li><li>Monitoreo de infraestructura</li><li>Administración de activos</li><li>Licenciamiento de software</li><li>Ventas corporativas de equipamiento</li></ul>
-      </details>
   </div></section>
+  <section class="wrap section workflow"><h2>Cómo trabajamos</h2><ol><li><h3>Relevamiento</h3><p>Identificamos los equipos, los servicios y las personas involucradas.</p></li><li><h3>Diagnóstico</h3><p>Revisamos el problema y su impacto en la operación.</p></li><li><h3>Propuesta</h3><p>Acordamos prioridades, alcance y condiciones.</p></li><li><h3>Implementación</h3><p>Ejecutamos las tareas acordadas con el equipo de la empresa.</p></li><li><h3>Documentación</h3><p>Registramos los cambios y las decisiones técnicas.</p></li><li><h3>Seguimiento</h3><p>Revisamos los resultados y las necesidades que queden abiertas.</p></li></ol></section>
   <section id="historia" class="history"><div class="wrap dual">
     <div><p class="number">20<span>+</span></p><p>Años de trayectoria</p></div>
     <div><h2>Desde fines de 2004</h2><p>KOLOSSUS surgió con el objetivo de proveer soluciones profesionales en tecnologías vinculadas con la informática, garantizando la calidad, seriedad y respaldo que las empresas necesitan.</p>
@@ -68,5 +76,6 @@
 <footer><div class="wrap foot"><strong>KOLOSSUS Consultoría en TI</strong><a href="https://clustersanfrancisco.com.ar/">Miembro del Cluster Tecnológico San Francisco ↗</a><a href="../index.html">Volver a Star Pulse</a></div></footer>
 <script src="../app.js"></script>
 <script src="../motion.js"></script>
+<script src="../guide.js"></script>
 </body>
 </html>

@@ -1,0 +1,24 @@
+.guide { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(2rem,6vw,6rem); padding-block:clamp(3rem,6vw,6rem); align-items:start; }
+.guide-lead p,.guide-review p { line-height:1.6; margin:1rem 0; }
+.guide-lead a,.guide .back { font-weight:650; text-underline-offset:.2em; }
+.guide-card { padding:clamp(1.2rem,3vw,2.6rem); background:#f4f7fc; border:1px solid #cdd9ed; border-radius:1.2rem; }
+.guide [hidden] { display:none; }
+.guide label { display:grid; gap:.35rem; margin-bottom:1rem; font-weight:600; }
+.guide select,.guide input:not([type=checkbox]),.guide textarea { width:100%; min-width:0; color:#14253e; border:1px solid #8093b1; background:white; padding:.72rem; border-radius:.45rem; font:inherit; }
+.guide textarea { resize:vertical; }
+.guide .meeting { display:flex; align-items:center; gap:.65rem; font-weight:400; }
+.guide button { cursor:pointer; background:#153aab; color:white; padding:.75rem 1rem; border:0; border-radius:.45rem; font:inherit; font-weight:650; }
+.guide :focus-visible { outline:3px solid #ad5011; outline-offset:3px; }
+.guide .channels { display:flex; gap:.6rem; flex-wrap:wrap; }
+.guide .back { margin-top:1rem; padding:.4rem 0; background:transparent; color:#163f8a; text-decoration:underline; }
+.workflow ol { padding-left:1.6rem; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+.workflow li::marker { color:#0759df; font-weight:700; }
+.workflow h3 { margin:.4rem 0; }
+@media(max-width:46rem) { .guide,.workflow ol { grid-template-columns:1fr; } }
+.guide .channels a { display:inline-block; background:#153aab; color:white; padding:.75rem 1rem; border-radius:.45rem; font-weight:650; text-decoration:none; }
+.guide .channels a[aria-disabled] { opacity:.55; }
+.guide .modes dt { font-weight:700; margin-top:1rem; }
+.guide .modes dd { margin:.25rem 0 0; }
+#inicio #servicios .bento { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#inicio #servicios .service { grid-column:auto; }
+@media(max-width:40rem) { #inicio #servicios .bento { grid-template-columns:1fr; } }
