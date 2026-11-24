@@ -3,7 +3,7 @@
 body { margin: 0; background: #0b151c; color: var(--ink); font: 1rem/1.6 system-ui, sans-serif; }
 .wrap { width: min(70rem, 90%); margin-inline: auto; }
 a { color: var(--accent); }
-a:focus-visible, summary:focus-visible { outline: 3px solid #ffda8c; outline-offset: 4px; }
+a:focus-visible, summary:focus-visible { box-shadow: 0 0 0 4px #101e28; outline: 3px solid #ffda8c; outline-offset: 4px; }
 .skip { position: absolute; transform: translateY(-120%); padding: .6rem; background: var(--surface); }
 .skip:focus { transform: none; }
 header, footer { border-block-end: 1px solid var(--line); }
@@ -11,7 +11,7 @@ header, footer { border-block-end: 1px solid var(--line); }
 .bar { justify-content: space-between; padding-block: 1.2rem; }
 .wordmark { font-weight: 800; font-size: 1.55rem; letter-spacing: -.05em; }
 nav a, .wordmark { color: var(--ink); text-decoration: none; }
-nav a:hover { text-decoration: underline; }
+nav a:hover, nav a[aria-current="location"] { text-decoration: underline; }
 nav .switch { color: var(--accent); }
 .hero { padding-block: clamp(4rem, 10vw, 9rem); background: radial-gradient(ellipse at right top, #20464b, transparent 62%), var(--surface); }
 h1, h2 { line-height: 1.08; letter-spacing: -.045em; margin: 0; }

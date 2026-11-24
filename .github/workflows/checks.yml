@@ -1,0 +1,26 @@
+name: Comprobaciones del sitio
+on:
+  push:
+    branches: [desarrollo]
+  pull_request:
+    branches: [desarrollo, main]
+permissions:
+  contents: read
+jobs:
+  navegacion:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    env:
+      BROWSER: ${{ matrix.browser }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --prefix "$RUNNER_TEMP/site-tools" --no-save --ignore-scripts playwright-core@1.56.1
+      - run: node "$RUNNER_TEMP/site-tools/node_modules/playwright-core/cli.js" install --with-deps "$BROWSER"
+      - run: node --check app.js
+      - run: NODE_PATH="$RUNNER_TEMP/site-tools/node_modules" node --test tests/site.test.cjs

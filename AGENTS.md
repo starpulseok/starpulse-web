@@ -6,7 +6,7 @@ Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas
 
 - index.html contiene la portada, los servicios de hardware, el contacto y los enlaces comerciales.
 - styles.css define la identidad azul y amarilla y el diseño adaptable.
-- app.js agrega animaciones, navegación activa, sombra del encabezado y año del pie.
+- app.js administra aria-current en ambas páginas y, en Star Pulse, la sombra del encabezado y el año del pie. Las animaciones de portada viven en CSS.
 - assets/ conserva los logos. README.md presenta el proyecto.
 
 - kolossus/index.html y kolossus/styles.css contienen la página institucional y su diseño preliminar. Su navegación y sus preguntas frecuentes usan HTML nativo.
@@ -22,3 +22,7 @@ Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas
 
 - Vincular las marcas en la misma pestaña con rutas relativas. Probar ambos index.html desde archivos locales y bajo el prefijo de un repositorio en GitHub Pages.
 - Usar únicamente información institucional verificada. Conservar los recursos existentes y excluir información confidencial de empresas. El canal empresarial vigente es el perfil de Linktree de Kolossus.
+
+- Seguir el flujo de dos computadoras documentado en README.md. Revisar status y actualizar desarrollo con pull --ff-only antes de editar. Compartir trabajo aprobado mediante commits y push a desarrollo.
+- Correr tests/site.test.cjs según README.md. La matriz de .github/workflows/checks.yml solo comprueba el sitio. Mantener las rutas relativas, los cuatro mensajes de WhatsApp y el acceso directo desde Servicios.
+- Revisar foco, contraste, zoom al 200 % y navegación sin JavaScript al cambiar el encabezado. Conservar las URL canónicas, imágenes sociales absolutas y sitemap como pendientes hasta confirmar el alojamiento.

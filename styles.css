@@ -11,7 +11,7 @@
 * { box-sizing: border-box; }
 body { margin: 0; }
 a { color: inherit; text-underline-offset: .25em; }
-a:focus-visible { outline: 3px solid #cd5700; outline-offset: 4px; }
+a:focus-visible { box-shadow: 0 0 0 4px white; outline: 3px solid #122040; outline-offset: 4px; }
 .wrap { width: min(74rem, 90%); margin-inline: auto; }
 .bar, nav, .row, .actions { display: flex; align-items: center; gap: 1.4rem; }
 .bar, .row { justify-content: space-between; }
@@ -21,7 +21,7 @@ a:focus-visible { outline: 3px solid #cd5700; outline-offset: 4px; }
 .logo { display: block; width: 7.5rem; height: auto; }
 nav a, .partner { text-decoration: none; font-weight: 600; }
 nav a { padding-block: .5rem; }
-nav a:hover, nav a.active { text-decoration: underline; color: var(--blue); }
+nav a:hover, nav a[aria-current="location"] { text-decoration: underline; color: var(--blue); }
 .partner { border: 1px solid var(--line); padding: .48rem .85rem; border-radius: .45rem; }
 .skip { position: fixed; top: -5rem; z-index: 10; padding: .7rem; background: white; }
 .skip:focus { top: .2rem; }
@@ -53,7 +53,7 @@ h3 { font-size: 1.5rem; }
 footer { background: #101c39; color: #e8efff; padding-block: 1.7rem; }
 @media (max-width: 50rem) {
   .bar { flex-wrap: wrap; gap: .4rem; padding-block: .6rem; }
-  nav { order: 1; width: 100%; justify-content: space-between; gap: .35rem; font-size: .92rem; }
+  nav { flex-wrap: wrap; order: 1; width: 100%; justify-content: space-between; gap: .35rem; font-size: .92rem; }
   .split { gap: 1rem; }
   :root { scroll-padding-top: 8rem; }
 }

@@ -1,56 +1,28 @@
-// ================== HEADER SOMBRA ==================
 const header = document.querySelector(".header");
-window.addEventListener(
-  "scroll",
-  () => {
-    if (!header) return;
-    header.classList.toggle("scrolled", window.scrollY > 10);
-  },
-  { passive: true }
-);
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
 
-// ================== AÑO AUTOMÁTICO ==================
-const yearEl = document.getElementById("year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+const sections = Array.from(document.querySelectorAll('nav a[href^="#"]'), link => ({
+  link,
+  section: document.getElementById(link.hash.slice(1))
+})).filter(item => item.section);
 
-// ================== REVEAL ANIMATIONS ==================
-if ('IntersectionObserver' in window) {
-  const reveals = document.querySelectorAll(".reveal");
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("show");
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  reveals.forEach((el) => io.observe(el));
-  document.documentElement.classList.add("reveal-enabled");
-
-  // ================== NAV ACTIVO ==================
-  const navLinks = document.querySelectorAll(".nav-link");
-  const sections = Array.from(navLinks, (link) => link.hash)
-    .map((id) => document.querySelector(id))
-    .filter(Boolean);
-
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        const id = "#" + entry.target.id;
-        navLinks.forEach((a) => {
-          a.classList.toggle("active", a.getAttribute("href") === id);
-        });
-      });
-    },
-    { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 }
-  );
-
-  sections.forEach((s) => sectionObserver.observe(s));
+function updateNavigation() {
+  header?.classList.toggle("scrolled", window.scrollY > 10);
+  const marker = Math.max(header?.offsetHeight || 0, window.innerHeight * 0.35);
+  const atEnd = window.scrollY > 0 &&
+    window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+  let current;
+  for (const item of sections) {
+    if (atEnd || item.section.getBoundingClientRect().top <= marker) current = item.link;
+  }
+  for (const { link } of sections) {
+    if (link === current) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  }
 }
+
+window.addEventListener("scroll", updateNavigation, { passive: true });
+window.addEventListener("resize", updateNavigation);
+window.addEventListener("pageshow", updateNavigation);
+updateNavigation();
