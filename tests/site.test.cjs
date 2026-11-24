@@ -50,7 +50,14 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           assert.equal(await page.locator('script[src*="/gsap/"]').count(), 0);
           await page.keyboard.press("Tab");
           assert.match(await page.locator(":focus").innerText(), /Saltar al contenido/);
-          await page.locator("img[loading=lazy]").evaluateAll(images => Promise.all(images.map(img => { img.loading = "eager"; return img.decode(); })));
+          for (const image of await page.locator("img[loading=lazy]").all()) {
+            await image.scrollIntoViewIfNeeded({ timeout: 5000 });
+            const src = await image.getAttribute("src");
+            await page.waitForFunction(source =>
+              [...document.images].filter(img => img.getAttribute("src") === source)
+                .some(img => img.complete && img.naturalWidth > 0),
+              src, { timeout: 8000 });
+          }
           assert(await page.evaluate(() =>
             document.documentElement.scrollWidth <= innerWidth &&
             [...document.images].every(img => img.complete && img.naturalWidth > 0) &&
