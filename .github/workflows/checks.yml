@@ -23,4 +23,4 @@ jobs:
           node-version: 22
       - run: npm install --prefix "$RUNNER_TEMP/site-tools" --no-save --ignore-scripts playwright-core@1.56.1
       - run: node --check app.js
-      - run: NODE_PATH="$RUNNER_TEMP/site-tools/node_modules" node --test tests/site.test.cjs
+      - run: HOME=/root NODE_PATH="$RUNNER_TEMP/site-tools/node_modules" node --test tests/site.test.cjs
