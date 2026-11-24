@@ -40,6 +40,14 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         await page.goto(base);
         for (const brand of ["Star Pulse", "Kolossus"]) {
           assert((await page.title()).startsWith(brand));
+          const selector = page.getByRole("group", { name: "Seleccionar marca" });
+          const links = selector.getByRole("link");
+          assert.equal(await links.count(), 2);
+          assert.equal(await selector.locator('[aria-current="page"]').count(), 1);
+          assert.equal(await links.nth(brand === "Star Pulse" ? 0 : 1).getAttribute("aria-current"), "page");
+          assert(await links.first().getByAltText("Star Pulse").isVisible());
+          assert.equal(await links.last().innerText(), "Kolossus");
+          assert.equal(await page.locator('script[src*="/gsap/"]').count(), 0);
           await page.keyboard.press("Tab");
           assert.match(await page.locator(":focus").innerText(), /Saltar al contenido/);
           assert(await page.evaluate(() =>

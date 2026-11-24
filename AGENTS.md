@@ -6,7 +6,7 @@ Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas
 
 - index.html contiene la portada, los servicios de hardware, el contacto y los enlaces comerciales.
 - styles.css define la identidad azul y amarilla y el diseño adaptable.
-- app.js administra aria-current en ambas páginas y, en Star Pulse, la sombra del encabezado y el año del pie. Las animaciones de portada viven en CSS.
+- app.js administra aria-current en ambas páginas y, en Star Pulse, la sombra del encabezado y el año del pie. experience.css y motion.js comparten el selector y los efectos de ambas marcas. Respetar movimiento reducido y conservar los avisos de licencia en vendor/gsap.
 - assets/ conserva los logos. README.md presenta el proyecto.
 
 - kolossus/index.html y kolossus/styles.css contienen la página institucional y su diseño preliminar. Su navegación y sus preguntas frecuentes usan HTML nativo.
