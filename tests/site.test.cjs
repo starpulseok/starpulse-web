@@ -29,7 +29,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
   const browser = await engines[engine].launch({channel: process.env.BROWSER_CHANNEL || undefined});
   t.after(() => browser.close());
 
-  for (const width of [320, 768, 1440]) {
+  for (const width of [320, 390, 768, 1440]) {
     for (const javaScriptEnabled of [false, true]) {
       await t.test(width + " px, JavaScript " + javaScriptEnabled, async t => {
         const page = await browser.newPage({ viewport: { width, height: 800 }, javaScriptEnabled, reducedMotion: "reduce" });
@@ -95,6 +95,30 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             }
             assert(await page.locator("#explore-email").isVisible());
           } else {
+            const cycle = page.locator("#ciclo");
+            const nodes = cycle.locator(".cycle-links a");
+            assert.equal(await nodes.count(), 6);
+            assert.equal(await cycle.locator(".phase:visible").count(), javaScriptEnabled ? 1 : 6);
+            for (const i of [5, 0, 3, 1, 4, 2]) {
+              const link = nodes.nth(i);
+              await link.focus();
+              await page.keyboard.press("Enter");
+              const panel = page.locator(await link.getAttribute("href"));
+              assert(await panel.isVisible());
+              if (javaScriptEnabled) {
+                assert.equal(await link.getAttribute("aria-current"), "step");
+                assert.equal(await cycle.locator(".phase:visible").count(), 1);
+              }
+              const related = panel.locator("a");
+              const target = page.locator(await related.getAttribute("href"));
+              assert.equal(await target.count(), 1);
+              if (javaScriptEnabled) {
+                await related.click();
+                assert(await target.evaluate(el => el.open));
+                await target.locator("summary").click();
+              }
+            }
+            assert.equal(await cycle.locator(".cycle-contact a").getAttribute("href"), "#contacto");
             const services = page.locator("details.service");
             assert.equal(await services.count(), 5);
             for (const card of await services.all()) {
