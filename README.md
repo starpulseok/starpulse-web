@@ -4,14 +4,15 @@ Star Pulse ofrece hardware y armado de PCs a medida. KOLOSSUS Consultoría en TI
 
 ## Estructura
 
-- index.html y styles.css componen Star Pulse. assets/ conserva los logos originales, la imagen WebP de portada y el favicon derivado del logo oficial.
+- index.html, entrada.css y entrada.js forman la entrada compartida. Los marcadores de la antigua portada comercial se derivan a starpulse/index.html con el mismo fragmento. Sin JavaScript se ofrece un enlace de continuación.
+- starpulse/index.html y styles.css componen Star Pulse. assets/ conserva los logos originales, la imagen WebP de portada y el favicon derivado del logo oficial.
 - kolossus/index.html y kolossus/styles.css componen el sitio institucional.
 - app.js sincroniza la navegación activa de ambas páginas. En Star Pulse también actualiza el año y el encabezado.
 - tests/site.test.cjs prueba ambas marcas con un servidor local temporal. .github/workflows/checks.yml ejecuta comprobaciones con permisos de lectura.
 
 ## Desarrollo local
 
-Abrí index.html o kolossus/index.html. Para servir el proyecto por HTTP, ejecutá python -m http.server 8000 --bind 127.0.0.1 desde la raíz y visitá http://127.0.0.1:8000/. No hay compilación.
+Abrí index.html para elegir una marca, o entrá directamente a kolossus/index.html o starpulse/index.html. Para servir el proyecto por HTTP, ejecutá python -m http.server 8000 --bind 127.0.0.1 desde la raíz y visitá http://127.0.0.1:8000/. No hay compilación.
 
 ## Sincronizar dos computadoras
 
@@ -58,4 +59,4 @@ Los cuatro WebP de assets/hardware/ provienen de una composición original gener
 
 ## Explorador de Star Pulse
 
-Cada actividad tiene su propia comparación de escritorio y notebook en index.html. explore.js muestra el perfil seleccionado y prepara el mensaje editable en memoria. Sin JavaScript, los enlaces del explorador llevan a las alternativas del mismo documento. Las doce escenas WebP de assets/perfiles fueron generadas con ImageGen para ilustrar actividades cotidianas; no identifican instalaciones ni clientes. Las tarjetas de hardware y los recursos oficiales conservan sus procedencias anteriores.
+Cada actividad tiene su propia comparación de escritorio y notebook en starpulse/index.html. explore.js muestra el perfil seleccionado y prepara el mensaje editable en memoria. Sin JavaScript, los enlaces del explorador llevan a las alternativas del mismo documento. Las doce escenas WebP de assets/perfiles fueron generadas con ImageGen para ilustrar actividades cotidianas; no identifican instalaciones ni clientes. Las tarjetas de hardware y los recursos oficiales conservan sus procedencias anteriores.

@@ -4,7 +4,8 @@ Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas
 
 ## Estructura
 
-- index.html contiene la portada, los servicios de hardware, el contacto y los enlaces comerciales.
+- index.html es la entrada conjunta de KOLOSSUS y STAR PULSE. entrada.css y entrada.js implementan su presentación y la compatibilidad con marcadores históricos.
+- starpulse/index.html contiene la portada, los servicios de hardware, el contacto y los enlaces comerciales.
 - styles.css define la identidad azul y amarilla y el diseño adaptable.
 - app.js administra aria-current en ambas páginas y, en Star Pulse, la sombra del encabezado y el año del pie. experience.css y motion.js comparten el selector y los efectos de ambas marcas. Respetar movimiento reducido y conservar los avisos de licencia en vendor/gsap.
 - assets/ conserva los logos. README.md presenta el proyecto.

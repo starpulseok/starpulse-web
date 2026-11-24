@@ -38,15 +38,24 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         page.on("pageerror", error => errors.push(error.message));
         page.on("response", response => { if (response.status() >= 400) errors.push(response.url()); });
         await page.goto(base);
+        assert.equal(await page.locator(".portal").count(), 2);
+        assert.equal(await page.locator(".portal").first().getAttribute("href"), "kolossus/index.html");
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        await page.goto(base + "#productos");
+        if (javaScriptEnabled) await page.waitForURL(base + "starpulse/index.html#productos");
+        else await page.locator("#productos.legacy").click();
+        assert.equal(page.url(),base + "starpulse/index.html#productos");
+        await page.goto(base);
+        await page.locator(".portal.star").click();
         for (const brand of ["Star Pulse", "Kolossus"]) {
           assert((await page.title()).toLowerCase().startsWith(brand.toLowerCase()));
           const selector = page.getByRole("group", { name: "Seleccionar marca" });
           const links = selector.getByRole("link");
           assert.equal(await links.count(), 2);
           assert.equal(await selector.locator('[aria-current="page"]').count(), 1);
-          assert.equal(await links.nth(brand === "Star Pulse" ? 0 : 1).getAttribute("aria-current"), "page");
-          assert(await links.first().getByAltText("Star Pulse").isVisible());
-          assert(await links.last().getByAltText("Kolossus").isVisible());
+          assert.equal(await links.nth(brand === "Star Pulse" ? 1 : 0).getAttribute("aria-current"), "page");
+          assert(await links.last().getByAltText("Star Pulse").isVisible());
+          assert(await links.first().getByAltText("Kolossus").isVisible());
           assert.equal(await page.locator('script[src*="/gsap/"]').count(), 0);
           await page.keyboard.press("Tab");
           assert.match(await page.locator(":focus").innerText(), /Saltar al contenido/);
@@ -135,7 +144,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(await page.getByText("Consultar por un armado").getAttribute("href"), await page.locator("#waPC").getAttribute("href"));
             const icon = await page.request.get(new URL(await page.locator('link[rel="icon"]').getAttribute("href"), page.url()).href);
             assert.equal((await icon.body()).subarray(1,4).toString(), "PNG");
-            await page.locator('a[href="kolossus/index.html"]').click();
+            await page.locator('a[href="../kolossus/index.html"]').click();
             assert.equal(page.url(), base + "kolossus/index.html");
           } else {
             assert.equal(await page.locator('a[href*="linktr.ee"]').getAttribute("href"), "https://linktr.ee/kolossusti");
@@ -150,7 +159,9 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             await page.keyboard.press("Enter");
             assert.equal(await page.locator("details[open]").count(), 1);
             await page.getByText("Volver a Star Pulse").click();
-            assert.equal(page.url(), base + "index.html");
+            assert.equal(page.url(), base + "starpulse/index.html");
+            await page.getByRole("link", {name:"Inicio conjunto"}).click();
+            assert.equal(page.url(),base + "index.html");
           }
         }
         assert.deepEqual(errors, []);

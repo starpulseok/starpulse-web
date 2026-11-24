@@ -33,7 +33,6 @@ html:has(#inicio) { scroll-padding-top: 8rem; }
 }
 @media (prefers-reduced-motion:no-preference) {
   html { scroll-behavior: smooth; }
-  @view-transition { navigation: auto; }
   ::view-transition-group(root) { animation-duration: .22s; }
   .brands a,.button,.cards svg,.cards article,.services li { transition: transform .2s ease, background-color .2s, box-shadow .2s; }
   .button:active,.brands a:active { transform: scale(.98); }
@@ -55,3 +54,8 @@ html:has(#inicio) { scroll-padding-top: 8rem; }
   .brands img { transition:opacity .18s ease,transform .18s ease; }
   .brands a:hover img { transform:scale(1.035); }
 }
+.brand-home { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
+.joint-link { color:inherit; font:600 .88rem/1.2 system-ui,sans-serif; text-underline-offset:.2em; padding-block:.5rem; }
+@media(max-width:25rem) { .brand-home { gap:.3rem; } }
+
+@media (prefers-reduced-motion:reduce) { ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*) { animation:none; } }
