@@ -58,7 +58,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           }
           await page.waitForFunction(() => [...document.images].filter(img => img.getClientRects().length)
             .every(img => img.complete && img.naturalWidth > 0), null, { timeout: 8000 });
-          assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), brand + ": ancho de página");
+          assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), await page.evaluate(() => JSON.stringify({width: innerWidth, scroll:document.documentElement.scrollWidth, elements:[...document.querySelectorAll("body *")].filter(el => el.getBoundingClientRect().right > innerWidth).map(el => [el.tagName,el.className,Math.round(el.getBoundingClientRect().right)]).slice(0,15)})));
           assert(await page.evaluate(() => [...document.querySelectorAll('a[href^="#"]')]
             .every(a => document.getElementById(a.hash.slice(1)))), brand + ": destino de anclas");
           if (brand === "Star Pulse") {
