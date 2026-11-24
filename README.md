@@ -51,3 +51,7 @@ El selector y las tarjetas son implementaciones propias en HTML y CSS. Se evalua
 ## KOLOSSUS
 
 La página institucional utiliza el azul #0866FF, blanco y tonos pizarra. kolossus/logo.webp y kolossus/favicon.png derivan de assets/2024_LOGO_v1.01.png. Los servicios se amplían con details y summary nativos. Los datos de contacto públicos están en el HTML.
+
+## Imágenes de hardware de Star Pulse
+
+Los cuatro WebP de assets/hardware/ provienen de una composición original generada con ImageGen para esta página. El encargo visual fue una estación de alto rendimiento sobre azul nocturno, un procesador sobre su placa, teclado con mouse y cables con hub. Se exportó cada cuadrante por separado. Son ilustraciones de categorías y servicios, sin relación con inventario ni instalaciones. El selector conserva el logo original de Star Pulse y usa el nombre recortado del archivo oficial de KOLOSSUS en assets/kolossus-selector.webp. La sección #armado es el punto de integración para un futuro configurador.

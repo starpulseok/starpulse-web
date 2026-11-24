@@ -29,6 +29,10 @@ async function enableMotion() {
     gsap.from(hero.querySelectorAll("h1,p,.actions,.button,.art,.architecture"), {
       opacity: .78, y: distance, duration: .48, stagger: .035, clearProps: "transform,opacity"
     });
+    const workstation = hero.querySelector(".art img");
+    if (workstation) {
+      gsap.from(workstation, { scale: desktop ? 1.045 : 1.015, duration: .95, ease: "power2.out" });
+    }
     document.querySelectorAll("main h2,.cards article,.services li").forEach(el => {
       gsap.from(el, { y: distance, opacity: .8, duration: .42, clearProps: "transform,opacity",
         scrollTrigger: { trigger: el, start: "top 94%", once: true } });

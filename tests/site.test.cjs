@@ -46,10 +46,11 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           assert.equal(await selector.locator('[aria-current="page"]').count(), 1);
           assert.equal(await links.nth(brand === "Star Pulse" ? 0 : 1).getAttribute("aria-current"), "page");
           assert(await links.first().getByAltText("Star Pulse").isVisible());
-          assert.equal(await links.last().innerText(), "Kolossus");
+          assert(await links.last().getByAltText("Kolossus").isVisible());
           assert.equal(await page.locator('script[src*="/gsap/"]').count(), 0);
           await page.keyboard.press("Tab");
           assert.match(await page.locator(":focus").innerText(), /Saltar al contenido/);
+          await page.locator("img[loading=lazy]").evaluateAll(images => Promise.all(images.map(img => { img.loading = "eager"; return img.decode(); })));
           assert(await page.evaluate(() =>
             document.documentElement.scrollWidth <= innerWidth &&
             [...document.images].every(img => img.complete && img.naturalWidth > 0) &&
@@ -62,6 +63,13 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(await page.locator('nav [aria-current]').count(), 1);
           }
           if (brand === "Star Pulse") {
+            const categories = page.locator("#productos details");
+            assert.equal(await categories.count(), 3);
+            for (const category of await categories.all()) {
+              await category.locator("summary").focus();
+              await page.keyboard.press("Enter");
+              assert(await category.locator("li").first().isVisible());
+            }
             const messages = new Set();
             for (const id of ["waPC", "waAsesor", "waProducto", "waBottom"]) {
               const url = new URL(await page.locator("#" + id).getAttribute("href"));

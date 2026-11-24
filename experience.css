@@ -46,3 +46,12 @@ html:has(#inicio) { scroll-padding-top: 8rem; }
   ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*) { animation: none; }
   .button:hover { transform: none; }
 }
+/* Logotipos del selector compartido */
+.brands a { min-width:6.7rem; position:relative; background-color:white; }
+.brands .kolossus-mark { width:5rem; height:auto; }
+.brands a:not([aria-current]) img { opacity:.8; }
+.brands a:hover img,.brands a:focus-visible img { opacity:1; }
+@media (prefers-reduced-motion:no-preference) {
+  .brands img { transition:opacity .18s ease,transform .18s ease; }
+  .brands a:hover img { transform:scale(1.035); }
+}
