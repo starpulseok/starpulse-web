@@ -60,3 +60,5 @@ Los cuatro WebP de assets/hardware/ provienen de una composición original gener
 ## Explorador de Star Pulse
 
 Cada actividad tiene su propia comparación de escritorio y notebook en starpulse/index.html. explore.js muestra el perfil seleccionado y prepara el mensaje editable en memoria. Sin JavaScript, los enlaces del explorador llevan a las alternativas del mismo documento. Las doce escenas WebP de assets/perfiles fueron generadas con ImageGen para ilustrar actividades cotidianas; no identifican instalaciones ni clientes. Las tarjetas de hardware y los recursos oficiales conservan sus procedencias anteriores.
+
+La portada institucional presenta cinco áreas de ingeniería y gestión. Cada tarjeta de KOLOSSUS relaciona una situación empresarial con su alcance y permite preparar una consulta o solicitar una reunión. Los enlaces funcionan sin JavaScript; guide.js permite editar el borrador en la tarjeta sin guardar datos.

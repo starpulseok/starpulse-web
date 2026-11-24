@@ -94,30 +94,26 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
               assert.equal(new URL(await page.locator("#explore-email").getAttribute("href")).searchParams.get("body"),await draft.inputValue());
             }
             assert(await page.locator("#explore-email").isVisible());
-          } else if (javaScriptEnabled) {
-            const modes = ["Necesidad puntual", "Acompañamiento tecnológico continuo"];
-            for (const mode of modes) {
-              await page.locator("#mode").selectOption(mode);
-              await page.locator("#need").selectOption({ index: 1 });
-              await page.locator("#meeting").check();
-              await page.locator("#review").click();
-              const draft = page.locator("#draft");
-              const text = await draft.inputValue();
-              assert.match(text, /coordinar una reunión/);
-              assert(text.includes(mode));
-              await draft.fill("");
-              assert.equal(await page.locator("#whatsapp").getAttribute("href"), null);
-              await draft.fill("Consulta editada & revisada");
-              const mail = new URL(await page.locator("#email").getAttribute("href"));
-              assert.equal(mail.pathname, "martinjoberto@kolossus.com.ar");
-              assert.equal(mail.searchParams.get("body"), await draft.inputValue());
-              const chat = new URL(await page.locator("#whatsapp").getAttribute("href"));
-              assert.equal(chat.searchParams.get("text"), await draft.inputValue());
-              await page.locator("#back").click();
-            }
           } else {
-            assert(await page.locator(".guide-card").isHidden());
-            assert(await page.locator(".guide noscript a").first().isVisible());
+            const services = page.locator("details.service");
+            assert.equal(await services.count(), 5);
+            for (const card of await services.all()) {
+              const summary = card.locator("summary");
+              await summary.focus();
+              await page.keyboard.press("Enter");
+              assert(await card.locator(".answer").isVisible());
+              const draft = card.locator("textarea");
+              if (javaScriptEnabled) await draft.fill("Consulta sobre TI & coordinación");
+              const chat = new URL(await card.locator(".chat").getAttribute("href"));
+              const mail = new URL(await card.locator(".mail").getAttribute("href"));
+              const meeting = new URL(await card.locator(".meet-link").getAttribute("href"));
+              assert.equal(chat.pathname, "/5493564661474");
+              assert.equal(mail.pathname, "martinjoberto@kolossus.com.ar");
+              assert.equal(chat.searchParams.get("text"), mail.searchParams.get("body"));
+              assert(meeting.searchParams.get("body").includes("coordinar una reunión"));
+              if (javaScriptEnabled) assert.equal(mail.searchParams.get("body"),await draft.inputValue());
+              await summary.click();
+            }
           }
           const first = page.locator('nav a[href^="#"]').first();
           await first.click();
@@ -148,13 +144,13 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(page.url(), base + "kolossus/index.html");
           } else {
             assert.equal(await page.locator('a[href*="linktr.ee"]').getAttribute("href"), "https://linktr.ee/kolossusti");
-            assert.equal(await page.locator("details.service").count(), 4);
+            assert.equal(await page.locator("details.service").count(), 5);
             assert.equal(await page.locator('.people a[href^="mailto:"]').count(), 2);
             for (const number of ["5493564661474", "5493564663933"]) {
               const href = await page.locator('.people a[href^="https://wa.me/' + number + '"]').getAttribute("href");
               assert(new URL(href).searchParams.get("text").includes("empresa"));
             }
-            assert.doesNotMatch(await page.locator("main").innerText(), /inteligencia artificial|automatización|transformación digital/i);
+            assert(await page.getByText("Evolución tecnológica y transformación digital", { exact:true }).isVisible());
             await page.locator("summary").first().focus();
             await page.keyboard.press("Enter");
             assert.equal(await page.locator("details[open]").count(), 1);
