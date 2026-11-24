@@ -22,3 +22,9 @@
 #inicio #servicios .bento { grid-template-columns:repeat(2,minmax(0,1fr)); }
 #inicio #servicios .service { grid-column:auto; }
 @media(max-width:40rem) { #inicio #servicios .bento { grid-template-columns:1fr; } }
+
+/* Las opciones largas del selector nativo no deben ensanchar la grilla en WebKit. */
+.guide-card,.guide-fields,.guide label { min-width:0; }
+.guide label { grid-template-columns:minmax(0,1fr); }
+.guide select { max-width:100%; }
+@media(max-width:46rem) { .guide { grid-template-columns:minmax(0,1fr); } }
