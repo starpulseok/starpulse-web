@@ -1,6 +1,6 @@
 # Star Pulse y Kolossus
 
-Star Pulse ofrece hardware y armado de PCs a medida. Kolossus es su unidad empresarial. Las dos páginas se sirven como archivos estáticos, incluso bajo el prefijo de un repositorio en GitHub Pages.
+Star Pulse ofrece hardware y armado de PCs a medida. KOLOSSUS Consultoría en TI es una marca independiente. Las dos páginas se sirven como archivos estáticos, incluso bajo el prefijo de un repositorio en GitHub Pages.
 
 ## Estructura
 
@@ -47,3 +47,7 @@ Ambas marcas tienen título, descripción y metadatos sociales propios. Cuando s
 experience.css comparte el selector de marcas, el encabezado y las microinteracciones. motion.js carga las copias locales de GSAP y ScrollTrigger 3.13.0 cuando se admite movimiento. Los archivos provienen de la distribución npm oficial de gsap y conservan sus avisos de licencia. Se utilizan para coordinar entradas y parallax. Licencia estándar de GSAP: https://gsap.com/standard-license/ . Mantener ambos archivos en la misma versión al actualizarlos.
 
 El selector y las tarjetas son implementaciones propias en HTML y CSS. Se evaluaron las tarjetas de Cult UI y los componentes React de Watermelon UI como referencias de profundidad e interacción. No se redistribuyen componentes, imágenes ni código de esas bibliotecas. Las transiciones entre documentos usan la API nativa cuando está disponible.
+
+## KOLOSSUS
+
+La página institucional utiliza el azul #0866FF, blanco y tonos pizarra. kolossus/logo.webp y kolossus/favicon.png derivan de assets/2024_LOGO_v1.01.png. Los servicios se amplían con details y summary nativos. Los datos de contacto públicos están en el HTML.

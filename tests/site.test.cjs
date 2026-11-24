@@ -39,7 +39,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         page.on("response", response => { if (response.status() >= 400) errors.push(response.url()); });
         await page.goto(base);
         for (const brand of ["Star Pulse", "Kolossus"]) {
-          assert((await page.title()).startsWith(brand));
+          assert((await page.title()).toLowerCase().startsWith(brand.toLowerCase()));
           const selector = page.getByRole("group", { name: "Seleccionar marca" });
           const links = selector.getByRole("link");
           assert.equal(await links.count(), 2);
@@ -77,6 +77,13 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(page.url(), base + "kolossus/index.html");
           } else {
             assert.equal(await page.locator('a[href*="linktr.ee"]').getAttribute("href"), "https://linktr.ee/kolossusti");
+            assert.equal(await page.locator("details.service").count(), 6);
+            assert.equal(await page.locator('a[href^="mailto:"]').count(), 2);
+            for (const number of ["5493564661474", "5493564663933"]) {
+              const href = await page.locator('a[href^="https://wa.me/' + number + '"]').getAttribute("href");
+              assert(new URL(href).searchParams.get("text").includes("empresa"));
+            }
+            assert(await page.getByText("Línea en desarrollo").isVisible());
             await page.locator("summary").first().focus();
             await page.keyboard.press("Enter");
             assert.equal(await page.locator("details[open]").count(), 1);

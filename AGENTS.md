@@ -1,6 +1,6 @@
 # Star Pulse
 
-Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas por WhatsApp y presentar Kolossus, la unidad empresarial. El eslogan es «Hardware pensado para vos».
+Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas por WhatsApp y facilitar el acceso a KOLOSSUS, marca independiente. El eslogan es «Hardware pensado para vos».
 
 ## Estructura
 
@@ -9,7 +9,7 @@ Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas
 - app.js administra aria-current en ambas páginas y, en Star Pulse, la sombra del encabezado y el año del pie. experience.css y motion.js comparten el selector y los efectos de ambas marcas. Respetar movimiento reducido y conservar los avisos de licencia en vendor/gsap.
 - assets/ conserva los logos. README.md presenta el proyecto.
 
-- kolossus/index.html y kolossus/styles.css contienen la página institucional y su diseño preliminar. Su navegación y sus preguntas frecuentes usan HTML nativo.
+- kolossus/index.html y kolossus/styles.css contienen la página institucional y su diseño institucional. Su navegación y sus tarjetas de servicios usan HTML nativo.
 
 ## Mantenimiento
 
@@ -21,7 +21,7 @@ Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas
 - Abrir index.html en el navegador. Revisar navegación, contacto y legibilidad en computadora, tablet y celular, con y sin JavaScript. Validar app.js con node --check app.js y revisar git diff antes de entregar.
 
 - Vincular las marcas en la misma pestaña con rutas relativas. Probar ambos index.html desde archivos locales y bajo el prefijo de un repositorio en GitHub Pages.
-- Usar únicamente información institucional verificada. Conservar los recursos existentes y excluir información confidencial de empresas. El canal empresarial vigente es el perfil de Linktree de Kolossus.
+- Usar únicamente información institucional verificada. Conservar los recursos existentes y excluir información confidencial de empresas. Conservar WhatsApp, correo y Linktree institucionales. No publicar clientes, domicilio ni horarios sin autorización.
 
 - Seguir el flujo de dos computadoras documentado en README.md. Revisar status y actualizar desarrollo con pull --ff-only antes de editar. Compartir trabajo aprobado mediante commits y push a desarrollo.
 - Correr tests/site.test.cjs según README.md. La matriz de .github/workflows/checks.yml solo comprueba el sitio. Mantener las rutas relativas, los cuatro mensajes de WhatsApp y el acceso directo desde Servicios.
