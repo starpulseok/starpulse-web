@@ -184,6 +184,29 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(page.url(),base + "index.html");
           }
         }
+        await page.locator(".portal.star").click();
+        const story = page.locator("#quienes");
+        assert.equal(await story.locator(".storyline li").count(), 3);
+        assert.match(await story.locator("li").first().innerText(), /KOLOSSUS, desde 2004/);
+        const companyLink = page.getByRole("link", { name: "Conocer las soluciones de KOLOSSUS" });
+        if (javaScriptEnabled) {
+          await page.locator('.profile-card[href="#perfil-persona"]').click();
+          assert(await companyLink.isHidden());
+          await page.locator('.profile-card[href="#perfil-empresa"]').click();
+        }
+        assert(await companyLink.isVisible());
+        await companyLink.focus();
+        await page.keyboard.press("Enter");
+        await page.waitForURL(base + "kolossus/index.html#servicios");
+        const equipment = page.locator("#servicio-equipamiento");
+        await equipment.locator("summary").focus();
+        await page.keyboard.press("Enter");
+        const equipmentLink = equipment.getByRole("link", { name: "Explorar equipamiento en Star Pulse" });
+        assert(await equipmentLink.isVisible());
+        await equipmentLink.focus();
+        await page.keyboard.press("Enter");
+        await page.waitForURL(base + "starpulse/index.html#orientador");
+        assert(await page.locator("#perfil-empresa").isVisible());
         assert.deepEqual(errors, []);
       });
     }

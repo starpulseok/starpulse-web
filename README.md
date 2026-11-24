@@ -66,3 +66,7 @@ La portada institucional presenta cinco áreas de ingeniería y gestión. Cada t
 ## Ciclo de infraestructura de KOLOSSUS
 
 Después de los cinco servicios, #ciclo relaciona seis etapas con sus tarjetas de servicio. kolossus/ciclo.css organiza un anillo SVG en escritorio y una secuencia conectada en pantallas pequeñas. kolossus/ciclo.js permite seleccionar por teclado o puntero y anima la señal con la copia local de GSAP cuando está disponible. Sin JavaScript, los enlaces llevan a seis descripciones visibles en el HTML. Las etapas tienen enlaces directos desde #fase-01 hasta #fase-06.
+
+## Historia y vínculos entre marcas
+
+starpulse/index.html#quienes presenta la trayectoria de KOLOSSUS desde 2004 y el origen de la identidad STAR PULSE. Dentro del perfil Empresa se puede pasar a kolossus/index.html#servicios. El panel del servicio de provisión de equipamiento devuelve al explorador en starpulse/index.html#orientador. Ambos enlaces son HTML nativo y vinculos.css comparte sus estilos.
