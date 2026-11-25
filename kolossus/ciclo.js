@@ -33,7 +33,7 @@ links.forEach((link,index) => link.addEventListener("click", event => {
   selectPhase(index,true);
   if (matchMedia("(max-width:34rem)").matches) panels[index].scrollIntoView({block:"nearest",behavior:"instant"});
 }));
-cycle.querySelectorAll(".phase a").forEach(link => link.addEventListener("click", () => {
+cycle.querySelectorAll('.phase a[href^="#servicio-"]').forEach(link => link.addEventListener("click", () => {
   document.getElementById(link.hash.slice(1)).open = true;
 }));
 reduced.addEventListener("change", () => selectPhase(panels.findIndex(panel => !panel.hidden),false));

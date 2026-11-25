@@ -24,6 +24,7 @@ function updateChannels() {
 function compose() {
   const key = [selected.id, intent, meeting.checked].join("/");
   const { profile, activity } = selected.dataset;
+  message.dataset.edited = String(memories.has(key));
   message.value = memories.get(key) ?? ("Hola, Star Pulse. Quisiera " + intent + " para " + activity + " (perfil " + profile + "). Me interesa comparar alternativas para mi actividad." + (meeting.checked ? " Quisiera coordinar una reunión." : ""));
   intents.forEach(button => button.setAttribute("aria-pressed", button.dataset.intent === intent));
   updateChannels();
@@ -49,6 +50,7 @@ for (const link of [...profiles, ...activities]) {
 }
 for (const button of intents) button.addEventListener("click", () => { intent = button.dataset.intent; compose(); });
 message.addEventListener("input", () => {
+  message.dataset.edited = "true";
   memories.set([selected.id,intent,meeting.checked].join("/"),message.value);
   updateChannels();
 });

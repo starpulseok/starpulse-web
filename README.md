@@ -84,3 +84,11 @@ La sección `kolossus/index.html#historia` reúne el origen de la consultora, su
 En `kolossus/index.html`, `#experiencia` reúne los sectores confirmados por KOLOSSUS. Las tarjetas describen necesidades de cada actividad. En `#soluciones-practicas`, cada elemento `details` contiene el nombre de la solución en `summary` y un párrafo con su alcance. Esta estructura admite proyectos reales cuando exista autorización sobre el contenido público. Mantener las propuestas de trabajo diferenciadas de los proyectos realizados.
 
 La sección `#tecnologias` organiza por categoría las herramientas y capacidades confirmadas. Identifica el alcance piloto cuando corresponde. Para ampliarla, verificar el uso efectivo antes de agregar una denominación. Mantener las evidencias privadas fuera del repositorio.
+
+## Consultas y reuniones
+
+Ambas páginas comparten `contacto.js` y `contacto.css`. Los enlaces con `data-compose` llevan el contexto de la actividad, el servicio, la etapa o la solución al editor de contacto. Las páginas conservan enlaces HTML directos a WhatsApp y correo. Sin JavaScript el visitante puede completar el mensaje en la aplicación elegida.
+
+Los campos opcionales y los borradores se procesan en memoria. Las acciones de canal codifican el mensaje como parámetro del enlace. Abrir el enlace prepara la conversación en el destino y el visitante decide el envío. Las ediciones manuales se conservan al modificar otros campos hasta elegir expresamente reemplazarlas.
+
+El tipo de consulta «Reunión» prepara un pedido de coordinación por los mismos canales. Una futura integración con Google Calendar requiere acordar responsables, disponibilidad, tratamiento de datos y autorización de acceso. El sitio actual funciona sin cuentas conectadas ni servicios de formularios.

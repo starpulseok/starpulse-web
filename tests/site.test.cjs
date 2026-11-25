@@ -141,7 +141,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
                 assert.equal(await link.getAttribute("aria-current"), "step");
                 assert.equal(await cycle.locator(".phase:visible").count(), 1);
               }
-              const related = panel.locator("a");
+              const related = panel.locator('a[href^="#servicio-"]');
               const target = page.locator(await related.getAttribute("href"));
               assert.equal(await target.count(), 1);
               if (javaScriptEnabled) {
@@ -170,6 +170,50 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
               if (javaScriptEnabled) assert.equal(mail.searchParams.get("body"),await draft.inputValue());
               await summary.click();
             }
+          }
+          const editor = page.locator(".contact-editor");
+          if (!javaScriptEnabled) {
+            assert(await editor.isHidden());
+            const contextual = page.locator(brand === "Star Pulse" ? ".solution [data-compose]" : ".phase [data-compose]").first();
+            const fallback = new URL(await contextual.getAttribute("href"));
+            assert.equal(fallback.protocol,"mailto:");
+            assert(fallback.searchParams.get("body").includes(brand === "Star Pulse" ? "Empresa · Administración" : "Necesidad"));
+            assert(await page.locator('#contacto a[href^="mailto:"]').first().isVisible());
+            assert(await page.locator('#contacto a[href^="https://wa.me/"]').first().isVisible());
+          } else {
+            if (brand === "Star Pulse") await page.locator('.profile-card[href="#perfil-empresa"]').click();
+            else await page.locator('.cycle-links a[href="#fase-01"]').click();
+            const entry = brand === "Star Pulse" ? page.locator(".solution:visible [data-compose]").first()
+              : page.locator(".phase:visible [data-compose]");
+            await entry.click();
+            const draft = editor.locator("[data-draft]");
+            assert.match(await draft.inputValue(), brand === "Star Pulse" ? /Perfil: Empresa.*\nActividad:/ : /Etapa: Necesidad/);
+            await editor.locator("summary").click();
+            await editor.locator('[data-field^="Nombre"]').fill("Sol & Río");
+            if (brand === "Kolossus") {
+              await editor.locator("[data-recipient]").selectOption({label:"Esp. Ing. Darío Julián Oberto"});
+              await editor.locator("[data-type]").selectOption("Reunión");
+              assert.match(await draft.inputValue(), /coordinar una reunión/);
+              assert.equal(new URL(await editor.locator("[data-chat]").getAttribute("href")).pathname, "/5493564663933");
+            } else {
+              await editor.locator('[data-field="Cantidad de equipos o puestos"]').fill("3");
+              await editor.locator('[data-field="Alternativas"]').selectOption("Notebook");
+              assert.match(await draft.inputValue(), /Alternativas: Notebook/);
+            }
+            const generated = await draft.inputValue();
+            assert(generated.includes("Sol & Río"));
+            const custom = generated + "\nPrueba & + # %";
+            await draft.fill(custom);
+            assert.equal(new URL(await editor.locator("[data-mail]").getAttribute("href")).searchParams.get("body"),custom);
+            assert.equal(new URL(await editor.locator("[data-chat]").getAttribute("href")).searchParams.get("text"),custom);
+            await page.evaluate(() => Object.defineProperty(navigator,"clipboard",{configurable:true,value:{writeText:async s => {window.copiedDraft=s;}}}));
+            await editor.locator("[data-copy]").click();
+            assert.equal(await page.evaluate(()=>window.copiedDraft),custom);
+            await draft.fill("");
+            assert.equal(await editor.locator("[data-chat]").getAttribute("href"), null);
+            await editor.locator("[data-rebuild]").click();
+            assert.equal(await draft.inputValue(), generated);
+            await editor.locator("summary").click();
           }
           const first = page.locator('nav a[href^="#"]').first();
           await first.click();
