@@ -78,3 +78,9 @@ La sección `kolossus/index.html#historia` reúne el origen de la consultora, su
 - El aporte histórico sobre IS2ME se documentó en el artículo de Mauro Graziosi, «Implementación práctica de Seguridad en PYMES», publicado el 17 de mayo de 2008. [Boletín 112 de Segu-Info](https://segu-info.com.ar/boletin/boletin-112-080517)
 - Las fichas de ISO distinguen los requisitos del sistema de gestión de las orientaciones sobre controles. Se enlazan como bibliografía. [ISO/IEC 27001:2022](https://www.iso.org/standard/27001) · [ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
 - La membresía de KOLOSSUS se puede verificar en el listado de empresas del [Cluster Tecnológico San Francisco](https://clustersanfrancisco.com.ar/).
+
+## Experiencia empresarial de KOLOSSUS
+
+En `kolossus/index.html`, `#experiencia` reúne los sectores confirmados por KOLOSSUS. Las tarjetas describen necesidades de cada actividad. En `#soluciones-practicas`, cada elemento `details` contiene el nombre de la solución en `summary` y un párrafo con su alcance. Esta estructura admite proyectos reales cuando exista autorización sobre el contenido público. Mantener las propuestas de trabajo diferenciadas de los proyectos realizados.
+
+La sección `#tecnologias` organiza por categoría las herramientas y capacidades confirmadas. Identifica el alcance piloto cuando corresponde. Para ampliarla, verificar el uso efectivo antes de agregar una denominación. Mantener las evidencias privadas fuera del repositorio.

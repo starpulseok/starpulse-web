@@ -96,6 +96,24 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert(await page.locator("#explore-email").isVisible());
           } else {
             await page.getByRole("navigation").getByRole("link", {name:"Trayectoria"}).click();
+            await page.getByRole("navigation").getByRole("link", { name:"Experiencia", exact:true }).click();
+            const sectors = page.locator("#experiencia h3");
+            assert.deepEqual(await sectors.allTextContents(), ["Industria","Comercio","Agroindustria","Servicios profesionales","Salud","Educación","Instituciones"]);
+            const applications = page.locator("#soluciones-practicas details");
+            assert.equal(await applications.count(), 7);
+            for (const item of await applications.all()) {
+              await item.locator("summary").focus();
+              await page.keyboard.press("Enter");
+              assert(await item.locator("p").isVisible());
+              await page.keyboard.press("Space");
+              assert(await item.locator("p").isHidden());
+            }
+            const tech = page.locator("#tecnologias");
+            assert.equal(await tech.locator("dt").count(), 5);
+            for (const term of ["Microsoft Windows","GNU/Linux","TP-Link Omada","Tailscale","Google Workspace","Dropbox","ChatGPT (OpenAI) en proyectos piloto"]) {
+              assert((await tech.innerText()).includes(term));
+            }
+            assert.equal(await tech.getByRole("link").getAttribute("href"), "#contacto");
             const history = page.locator("#historia");
             assert.equal(await history.locator(".history-line > li").count(), 3);
             for (const detail of await history.locator("details").all()) {
