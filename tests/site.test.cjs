@@ -95,6 +95,20 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             }
             assert(await page.locator("#explore-email").isVisible());
           } else {
+            await page.getByRole("navigation").getByRole("link", {name:"Trayectoria"}).click();
+            const history = page.locator("#historia");
+            assert.equal(await history.locator(".history-line > li").count(), 3);
+            for (const detail of await history.locator("details").all()) {
+              const trigger = detail.locator("summary");
+              await trigger.focus();
+              await page.keyboard.press("Enter");
+              assert(await detail.locator("p").isVisible());
+              await page.keyboard.press("Space");
+              assert(await detail.locator("p").isHidden());
+            }
+            assert.equal(await history.getByText("Consultar publicación original").getAttribute("href"), "https://segu-info.com.ar/boletin/boletin-112-080517");
+            assert.equal(await history.locator("#cluster a").getAttribute("href"), "https://clustersanfrancisco.com.ar/");
+            assert.equal(await history.locator('a[href^="https://www.iso.org/"]').count(), 2);
             const cycle = page.locator("#ciclo");
             const nodes = cycle.locator(".cycle-links a");
             assert.equal(await nodes.count(), 6);

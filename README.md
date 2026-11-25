@@ -70,3 +70,11 @@ Después de los cinco servicios, #ciclo relaciona seis etapas con sus tarjetas d
 ## Historia y vínculos entre marcas
 
 starpulse/index.html#quienes presenta la trayectoria de KOLOSSUS desde 2004 y el origen de la identidad STAR PULSE. Dentro del perfil Empresa se puede pasar a kolossus/index.html#servicios. El panel del servicio de provisión de equipamiento devuelve al explorador en starpulse/index.html#orientador. Ambos enlaces son HTML nativo y vinculos.css comparte sus estilos.
+
+## Trayectoria institucional de KOLOSSUS
+
+La sección `kolossus/index.html#historia` reúne el origen de la consultora, sus aportes profesionales y la vinculación regional. Los detalles se abren con HTML nativo. `kolossus/trayectoria.js` agrega una transición opcional con GSAP que respeta la preferencia de movimiento reducido.
+
+- El aporte histórico sobre IS2ME se documentó en el artículo de Mauro Graziosi, «Implementación práctica de Seguridad en PYMES», publicado el 17 de mayo de 2008. [Boletín 112 de Segu-Info](https://segu-info.com.ar/boletin/boletin-112-080517)
+- Las fichas de ISO distinguen los requisitos del sistema de gestión de las orientaciones sobre controles. Se enlazan como bibliografía. [ISO/IEC 27001:2022](https://www.iso.org/standard/27001) · [ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
+- La membresía de KOLOSSUS se puede verificar en el listado de empresas del [Cluster Tecnológico San Francisco](https://clustersanfrancisco.com.ar/).

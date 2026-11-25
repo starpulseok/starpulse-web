@@ -64,3 +64,22 @@ blockquote { font-size:clamp(1.45rem,2.55vw,2.65rem); line-height:1.32; letter-s
 @media (max-width:50rem) { .header nav { justify-content:flex-start; gap:1.2rem; } .bento { grid-template-columns:repeat(2,minmax(0,1fr)); } .bento .service { grid-column:auto; } }
 @media (max-width:40rem) { .hero-grid,.dual,.people,.bento { grid-template-columns:1fr; } .blueprint { min-height:13rem; } .service summary { min-height:auto; } .actions { gap:1rem; } }
 @media (prefers-reduced-motion:no-preference) and (hover:hover) { .service { transition:border-color .2s,transform .2s; } .service:hover { transform:translateY(-2px); } }
+
+/* Trayectoria institucional */
+.history-layout { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr); gap:clamp(2rem,5vw,4rem); }
+.history-layout header { align-self:start; }
+.history-layout :is(h2,h3) { margin:.45rem 0 .85rem; }
+.history-layout header .pillars { margin:1.4rem 0; gap:.6rem 1.2rem; }
+.history-kicker { color:#98c4ff; font-size:.83rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.history-line { margin:0; padding:0 0 0 1.4rem; list-style:none; display:grid; gap:1rem; }
+.history-line > li { position:relative; padding:clamp(1.15rem,2.4vw,2rem); background:#162e50; border:1px solid #355579; border-radius:1rem; }
+.history-line > li::before { content:""; position:absolute; left:-1.15rem; top:1.8rem; width:.65rem; height:.65rem; border:2px solid #99c7ff; border-radius:50%; background:#153760; }
+.history-line > li:not(:last-child)::after { content:""; position:absolute; left:calc(-1.15rem + .325rem + 1px); top:calc(1.8rem + .65rem + 4px); height:calc(100% + 1rem - .65rem - 2px); border-left:1px solid #7095c0; }
+.history-line details { margin-top:1rem; border-top:1px solid #476282; }
+.history-line summary { padding:.7rem 0; cursor:pointer; font-weight:650; }
+.history-line details ul { padding-left:1.3rem; }
+.history-layout a { color:#bad9ff; font-weight:600; }
+.history-line > li > a,.cluster-card a { display:inline-block; margin-top:.8rem; }
+.cluster-card { grid-column:1/-1; display:grid; grid-template-columns:1fr 1.4fr; gap:1.4rem; padding:clamp(1.35rem,3vw,2.5rem); background:#f1f5f9; color:#0f172a; border-radius:1rem; }
+.cluster-card :is(.history-kicker,a) { color:#124c98; }
+@media (max-width:48rem) { .history-layout,.cluster-card { grid-template-columns:1fr; } }
