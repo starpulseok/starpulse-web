@@ -16,7 +16,7 @@ function updateChannels() {
     mail.removeAttribute("href");
     return;
   }
-  const body = encodeURIComponent(text);
+  const body = encodeURIComponent(text.toWellFormed());
   wa.href = "https://wa.me/5493564661474?text=" + body;
   mail.href = "mailto:starpulse.contacto@gmail.com?subject=" + encodeURIComponent("Consulta para Star Pulse") + "&body=" + body;
 }

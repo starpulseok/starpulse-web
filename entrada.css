@@ -42,3 +42,16 @@ a:focus-visible { outline:4px solid #ffda49; outline-offset:4px; }
 }
 
 @media (max-width:40rem) { main { padding-block:clamp(1.5rem,4vh,2.5rem); } .portal .copy { padding:1rem; } }
+
+@media (prefers-reduced-motion:no-preference) {
+  .gateway { animation:gateway-entry .5s ease-out; }
+  .connection i { animation:connection-x 1.3s ease-in-out 2 alternate; }
+  @media (max-width:40rem) { .connection i { animation-name:connection-y; } }
+}
+@keyframes gateway-entry { from { opacity:.87; transform:translateY(10px); } }
+@keyframes connection-x { from { transform:translateX(-16px); } to { transform:translateX(16px); } }
+@keyframes connection-y { from { transform:translateY(-10px); } to { transform:translateY(10px); } }
+
+.error-home { margin-top:1.5rem; text-align:center; }
+.error-home a { color:inherit; }
+body:has(.error-home) .portal { display:flex; }

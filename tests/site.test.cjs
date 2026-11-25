@@ -6,7 +6,7 @@ const http = require("node:http");
 const engines = require("playwright-core");
 
 const root = path.resolve(__dirname, "..");
-const prefix = "/starpulse-web/";
+const prefix = process.env.SITE_TEST_PREFIX || "/starpulse-web/";
 const mime = { html: "text/html; charset=utf-8", css: "text/css", js: "text/javascript", png: "image/png", jpg: "image/jpeg", webp: "image/webp" };
 const engine = process.env.BROWSER || "chromium";
 
@@ -17,7 +17,8 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
     const file = path.resolve(root, relative);
     const type = mime[path.extname(file).slice(1)];
     if (!pathname.startsWith(prefix) || !file.startsWith(root + path.sep) || !type || !fs.existsSync(file)) {
-      res.writeHead(404).end();
+      const errorPage = fs.readFileSync(path.join(root,"404.html"),"utf8");
+      res.writeHead(404,{"Content-Type":mime.html}).end(errorPage.replace('<base href="/starpulse-web/">', '<base href="' + prefix + '">'));
       return;
     }
     res.writeHead(200, { "Content-Type": type });
@@ -29,6 +30,34 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
   const browser = await engines[engine].launch({channel: process.env.BROWSER_CHANNEL || undefined});
   t.after(() => browser.close());
 
+  // El alojamiento sirve el documento de error en la URL solicitada.
+  for (const enabled of [false,true]) {
+    const audit = await browser.newPage({javaScriptEnabled:enabled, reducedMotion:"reduce"});
+    try {
+      for (const [route,type] of [["","WebPage"],["kolossus/","Brand"],["starpulse/","Brand"]]) {
+        const response = await audit.goto(base + route);
+        assert.equal(response.status(),200);
+        assert.equal(await audit.locator("html").getAttribute("lang"),"es-AR");
+        assert.equal(await audit.locator('meta[name="robots"]').getAttribute("content"),"noindex, follow");
+        assert.equal(await audit.locator('link[rel="canonical"]').count(),0);
+        const schema = JSON.parse(await audit.locator('script[type="application/ld+json"]').textContent());
+        assert.equal((schema.mainEntity || schema)["@type"],type);
+        assert.equal(await audit.locator("h1").count(),1);
+        for(const meta of ['meta[name="description"]','meta[property="og:title"]','meta[property="og:description"]','meta[name="twitter:card"]']) {
+          assert((await audit.locator(meta).getAttribute("content")).trim());
+        }
+        assert((await audit.request.get(new URL(await audit.locator('link[rel="icon"]').getAttribute("href"),audit.url()).href)).ok());
+      }
+      const missing = await audit.goto(base+"anterior/enlace-inexistente");
+      assert.equal(missing.status(),404);
+      assert.equal(await audit.locator("h1").innerText(),"Página no encontrada");
+      for (const [label,target] of [["KOLOSSUS","kolossus/index.html"],["Star Pulse","starpulse/index.html"],["Volver al inicio conjunto","index.html"]]) {
+        const link=audit.getByRole("link",{name:new RegExp(label)});
+        assert.equal(await link.evaluate(a=>a.href),base+target);
+        assert((await audit.request.get(base+target)).ok());
+      }
+    } finally { await audit.close(); }
+  }
   for (const width of [320, 360, 390, 430, 768, 1024, 1440, 1920]) {
     for (const javaScriptEnabled of [false, true]) {
       await t.test(width + " px, JavaScript " + javaScriptEnabled, async t => {
@@ -310,4 +339,16 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
       });
     }
   }
+});
+
+
+test("Plan SEO con un origen ficticio y subdirectorio", () => {
+  const { productionPlan } = require("../tools/plan-seo.cjs");
+  const plan = productionPlan("https://ejemplo.invalid/ensayo/");
+  assert.equal(plan.pages.length,3);
+  assert.equal(plan.pages[1].canonical,"https://ejemplo.invalid/ensayo/kolossus/");
+  assert.equal(plan.errorBase,"/ensayo/");
+  assert.equal((plan.sitemap.match(/<loc>/g)||[]).length,3);
+  assert(plan.robots.includes("https://ejemplo.invalid/ensayo/sitemap.xml"));
+  assert.throws(()=>productionPlan("http://ejemplo.invalid/"));
 });

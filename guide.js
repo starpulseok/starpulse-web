@@ -14,8 +14,8 @@ for (const card of document.querySelectorAll(".service")) {
       for (const link of [chat,mail,meeting]) link.removeAttribute("href");
       return;
     }
-    chat.href = chatBase + encodeURIComponent(text);
-    mail.href = emailBase + encodeURIComponent(text);
-    meeting.href = emailBase + encodeURIComponent(text + " Me gustaría coordinar una reunión.");
+    chat.href = chatBase + encodeURIComponent(text.toWellFormed());
+    mail.href = emailBase + encodeURIComponent(text.toWellFormed());
+    meeting.href = emailBase + encodeURIComponent(text.toWellFormed() + " Me gustaría coordinar una reunión.");
   });
 }

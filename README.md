@@ -96,3 +96,15 @@ El tipo de consulta «Reunión» prepara un pedido de coordinación por los mism
 ## Revisión visual y responsive
 
 La suite recorre las tres páginas a 320, 360, 390, 430, 768, 1024, 1440 y 1920 px con JavaScript activado y desactivado. Comprueba el orden de los enlaces según las secciones reales, los destinos entre marcas, los borradores de contacto y la navegación por teclado. Los enlaces de navegación ofrecen 44 px de altura y el encabezado deja de fijarse cuando queda poca altura visible. Para revisar los estilos, verificá también el zoom al 200 %, el foco y la preferencia de movimiento reducido.
+
+## SEO y paso de preview a producción
+
+Las tres páginas contienen noindex, follow en HTML inicial y datos JSON-LD de WebPage y Brand. El preview conserva acceso de rastreo y evita enviar un sitemap a buscadores. La directiva solo surte efecto después de servir la versión nueva y de que el buscador vuelva a rastrear. Para un preview privado, habilitar autenticación en el servidor.
+
+1. Confirmar con los responsables dominio, arquitectura de marcas y ruta pública. El planificador contempla el sitio conjunto con dos subdirectorios. Si se aprueban dominios separados, revisar vínculos, propiedad de cada sitemap y canónicas antes de empaquetar.
+2. Ejecutar `node tools/plan-seo.cjs URL_BASE_APROBADA` con URL HTTPS terminada en barra. El resultado por consola propone las tres canónicas, imágenes sociales absolutas, base para la 404, sitemap y robots. Este paso no escribe archivos.
+3. En la futura copia de producción, incorporar canonical y og:url por página, usar URL absoluta para og:image/twitter:image y los logos de JSON-LD. Para la entrada conjunta, aprobar una imagen social representativa de las dos marcas. Mantener en preview las fichas sociales provisionales. Servir el sitemap bajo la base aprobada y acordar robots.txt en la raíz del origen con su administrador, respetando las reglas de otros sitios.
+4. Configurar el documento de error para devolver HTTP 404 sin redirección. La base de 404.html corresponde al prefijo del repositorio en Pages y debe sustituirse por la raíz pública de cada otro montaje. Mantener el noindex de la página de error.
+5. Tras aprobar el lanzamiento, retirar noindex exclusivamente en las tres páginas de producción, verificar las respuestas HTTP reales, canónicas, HTTPS, recursos y redirecciones de las URL antiguas. Mantener Github Pages como preview con noindex. Validar a continuación Search Console, sitemap y, con los datos comerciales confirmados, Google Business Profile.
+
+El logo compacto assets/starpulse-selector.webp deriva del original assets/logo.jpg. La entrada usa CSS para las transiciones de portada y conexión; las páginas internas conservan GSAP y ScrollTrigger locales. El planificador y las pruebas son archivos de mantenimiento que deben excluirse del paquete.
