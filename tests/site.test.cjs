@@ -5,7 +5,7 @@ const path = require("node:path");
 const http = require("node:http");
 const engines = require("playwright-core");
 
-const root = path.resolve(__dirname, "..");
+const root = path.resolve(process.env.SITE_TEST_ROOT || path.join(__dirname, ".."));
 const prefix = process.env.SITE_TEST_PREFIX || "/starpulse-web/";
 const mime = { html: "text/html; charset=utf-8", css: "text/css", js: "text/javascript", png: "image/png", jpg: "image/jpeg", webp: "image/webp" };
 const engine = process.env.BROWSER || "chromium";
@@ -18,7 +18,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
     const type = mime[path.extname(file).slice(1)];
     if (!pathname.startsWith(prefix) || !file.startsWith(root + path.sep) || !type || !fs.existsSync(file)) {
       const errorPage = fs.readFileSync(path.join(root,"404.html"),"utf8");
-      res.writeHead(404,{"Content-Type":mime.html}).end(errorPage.replace('<base href="/starpulse-web/">', '<base href="' + prefix + '">'));
+      res.writeHead(404,{"Content-Type":mime.html}).end(process.env.SITE_TEST_ROOT ? errorPage : errorPage.replace('<base href="/starpulse-web/">', '<base href="' + prefix + '">'));
       return;
     }
     res.writeHead(200, { "Content-Type": type });
@@ -351,4 +351,16 @@ test("Plan SEO con un origen ficticio y subdirectorio", () => {
   assert.equal((plan.sitemap.match(/<loc>/g)||[]).length,3);
   assert(plan.robots.includes("https://ejemplo.invalid/ensayo/sitemap.xml"));
   assert.throws(()=>productionPlan("http://ejemplo.invalid/"));
+});
+
+test("El plan SEO rechaza rutas ambiguas y destinos incompletos", () => {
+  const { productionPlan } = require("../tools/plan-seo.cjs");
+  for (const url of ["https://ejemplo.invalid/a/../b/", "https://ejemplo.invalid/%2e%2e/",
+                     "https://ejemplo.invalid/.git/", "http://ejemplo.invalid/"]) {
+    assert.throws(() => productionPlan(url));
+  }
+  const config = { entrada: "https://ejemplo.invalid/", kolossus: "https://ejemplo.invalid/k/",
+                   starpulse: "https://ejemplo.invalid/s/" };
+  assert.throws(() => productionPlan(config));
+  assert.throws(() => productionPlan({ ...config, imagenConjunta: config.entrada }));
 });
