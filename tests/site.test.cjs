@@ -29,7 +29,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
   const browser = await engines[engine].launch({channel: process.env.BROWSER_CHANNEL || undefined});
   t.after(() => browser.close());
 
-  for (const width of [320, 390, 768, 1440]) {
+  for (const width of [320, 360, 390, 430, 768, 1024, 1440, 1920]) {
     for (const javaScriptEnabled of [false, true]) {
       await t.test(width + " px, JavaScript " + javaScriptEnabled, async t => {
         const page = await browser.newPage({ viewport: { width, height: 800 }, javaScriptEnabled, reducedMotion: "reduce" });
@@ -41,6 +41,9 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         assert.equal(await page.locator(".portal").count(), 2);
         assert.equal(await page.locator(".portal").first().getAttribute("href"), "kolossus/index.html");
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        await page.locator(".portal").first().click();
+        await page.locator(".joint-link").click();
+        await page.waitForURL(base + "index.html");
         await page.goto(base + "#productos");
         if (javaScriptEnabled) await page.waitForURL(base + "starpulse/index.html#productos");
         else await page.locator("#productos.legacy").click();
@@ -49,6 +52,11 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         await page.locator(".portal.star").click();
         for (const brand of ["Star Pulse", "Kolossus"]) {
           assert((await page.title()).toLowerCase().startsWith(brand.toLowerCase()));
+          const navLinks = page.locator(".header nav a");
+          assert(await navLinks.evaluateAll(links => links.every(a => a.getBoundingClientRect().height >= 44)));
+          assert(await navLinks.evaluateAll(links => links.every((a,i) => i === 0 ||
+            (document.getElementById(links[i-1].hash.slice(1)).compareDocumentPosition(document.getElementById(a.hash.slice(1))) & Node.DOCUMENT_POSITION_FOLLOWING))));
+          assert(await page.evaluate(() => [...document.images].every(i => i.hasAttribute("alt") && i.hasAttribute("width") && i.hasAttribute("height"))));
           const selector = page.getByRole("group", { name: "Seleccionar marca" });
           const links = selector.getByRole("link");
           assert.equal(await links.count(), 2);
@@ -181,6 +189,21 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert(await page.locator('#contacto a[href^="mailto:"]').first().isVisible());
             assert(await page.locator('#contacto a[href^="https://wa.me/"]').first().isVisible());
           } else {
+            if (brand === "Kolossus") {
+              const service = page.locator(".service").first();
+              await service.locator("summary").click();
+              await service.locator("[data-compose]").click();
+              assert.match(await editor.locator("[data-draft]").inputValue(), /Servicio: Consultoría e ingeniería TI/);
+              await service.locator("summary").click();
+            } else {
+              for (const [profile, intent] of [["empresa","Cotización"],["persona","Asesoramiento"]]) {
+                await page.locator('.profile-card[href="#perfil-' + profile + '"]').click();
+                await page.locator(".solution:visible [data-compose]").click();
+                await editor.locator("[data-type]").selectOption(intent);
+                const text = await editor.locator("[data-draft]").inputValue();
+                assert(text.includes(intent) && text.toLowerCase().includes("perfil: " + profile));
+              }
+            }
             if (brand === "Star Pulse") await page.locator('.profile-card[href="#perfil-empresa"]').click();
             else await page.locator('.cycle-links a[href="#fase-01"]').click();
             const entry = brand === "Star Pulse" ? page.locator(".solution:visible [data-compose]").first()
@@ -256,7 +279,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(await page.locator("details[open]").count(), 1);
             await page.getByText("Volver a Star Pulse").click();
             assert.equal(page.url(), base + "starpulse/index.html");
-            await page.getByRole("link", {name:"Inicio conjunto"}).click();
+            await page.locator("footer").getByRole("link", {name:"Inicio conjunto"}).click();
             assert.equal(page.url(),base + "index.html");
           }
         }

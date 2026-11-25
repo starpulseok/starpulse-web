@@ -13,8 +13,8 @@
 #inicio .brands { background: #283a44; }
 #inicio .brands a[aria-current] { background: #173236; color: #c7fff1; box-shadow: inset 0 -3px #8de1cf; }
 .skip:focus { z-index: 10; }
-#inicio { scroll-margin-top: 8rem; }
-html:has(#inicio) { scroll-padding-top: 8rem; }
+:root { scroll-padding-top:5.5rem; }
+@media (max-width:50rem) { :root { scroll-padding-top:7.5rem; } }
 #inicio .hero { position: relative; overflow: hidden; isolation: isolate; }
 #inicio .hero .wrap { position: relative; }
 .architecture { position: absolute; inset: 0 0 0 58%; display: grid; place-content: center; opacity: .8; pointer-events: none; }
@@ -59,3 +59,23 @@ html:has(#inicio) { scroll-padding-top: 8rem; }
 @media(max-width:25rem) { .brand-home { gap:.3rem; } }
 
 @media (prefers-reduced-motion:reduce) { ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*) { animation:none; } }
+
+.header .brand-home .brands a { min-height:44px; }
+.header .joint-link,.header nav a { display:inline-flex; align-items:center; min-height:44px; box-sizing:border-box; }
+.header .joint-link { line-height:1.15; }
+footer a { display:inline-flex; align-items:center; min-height:2.75rem; }
+@media (max-width:50rem) {
+  .header .bar { padding-block:.25rem; gap:.15rem; }
+  .header .bar nav { justify-content:space-between; gap:0 .25rem; }
+}
+@media (max-width:25rem) {
+  .header .bar { width:94%; }
+  .header .brand-home { width:100%; justify-content:space-between; }
+  .brands a { min-width:4.9rem; }
+  .brands img,.brands .kolossus-mark { max-width:4.4rem; }
+  .header nav a { font-size:.875rem; }
+}
+@media (max-height:30rem) {
+  .header { position:relative; }
+  html:root { scroll-padding-top:1rem; }
+}

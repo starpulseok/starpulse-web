@@ -5,7 +5,6 @@
   --line: #cdd6e4;
   font: 100%/1.55 "Segoe UI", Arial, sans-serif;
   color: var(--ink);
-  scroll-padding-top: 7rem;
   scroll-behavior: smooth;
 }
 * { box-sizing: border-box; }
@@ -55,7 +54,6 @@ footer { background: #101c39; color: #e8efff; padding-block: 1.7rem; }
   .bar { flex-wrap: wrap; gap: .4rem; padding-block: .6rem; }
   nav { flex-wrap: wrap; order: 1; width: 100%; justify-content: space-between; gap: .35rem; font-size: .92rem; }
   .split { gap: 1rem; }
-  :root { scroll-padding-top: 8rem; }
 }
 @media (max-width: 39rem) {
   .split,.cards,.service-grid { grid-template-columns: 1fr; }

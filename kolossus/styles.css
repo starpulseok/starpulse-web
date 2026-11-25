@@ -85,7 +85,7 @@ blockquote { font-size:clamp(1.45rem,2.55vw,2.65rem); line-height:1.32; letter-s
 @media (max-width:48rem) { .history-layout,.cluster-card { grid-template-columns:1fr; } }
 
 .practice { display:grid; gap:clamp(3rem,6vw,5rem); }
-.practice section { min-width:0; scroll-margin-top:8rem; }
+.practice section { min-width:0; }
 .practice .section-intro { margin-block:.85rem 1.6rem; }
 .sector-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr)); gap:.85rem; padding:0; margin:0; list-style:none; }
 .sector-grid li { padding:1.3rem; border:1px solid #cedbec; border-radius:.9rem; background:#f4f7fc; }
@@ -105,3 +105,6 @@ blockquote { font-size:clamp(1.45rem,2.55vw,2.65rem); line-height:1.32; letter-s
 .tech-list dt { font-weight:700; color:#a8ceff; }
 .tech-list dd { margin:0; }
 @media (max-width:36rem) { .tech-list div { grid-template-columns:1fr; gap:.25rem; } }
+
+.footer-links { display:flex; flex-wrap:wrap; gap:.25rem 1.2rem; }
+@media (min-width:72rem) { .sector-grid li:first-child { grid-column:span 2; display:flex; align-items:center; gap:1.4rem; } .sector-grid li:first-child svg { flex:none; } }

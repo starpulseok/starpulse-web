@@ -40,3 +40,5 @@ a:focus-visible { outline:4px solid #ffda49; outline-offset:4px; }
   .identity img { width:76%; max-height:9rem; height:auto; }
   .star .identity img { width:165%; max-width:none; height:auto; }
 }
+
+@media (max-width:40rem) { main { padding-block:clamp(1.5rem,4vh,2.5rem); } .portal .copy { padding:1rem; } }

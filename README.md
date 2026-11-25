@@ -92,3 +92,7 @@ Ambas páginas comparten `contacto.js` y `contacto.css`. Los enlaces con `data-c
 Los campos opcionales y los borradores se procesan en memoria. Las acciones de canal codifican el mensaje como parámetro del enlace. Abrir el enlace prepara la conversación en el destino y el visitante decide el envío. Las ediciones manuales se conservan al modificar otros campos hasta elegir expresamente reemplazarlas.
 
 El tipo de consulta «Reunión» prepara un pedido de coordinación por los mismos canales. Una futura integración con Google Calendar requiere acordar responsables, disponibilidad, tratamiento de datos y autorización de acceso. El sitio actual funciona sin cuentas conectadas ni servicios de formularios.
+
+## Revisión visual y responsive
+
+La suite recorre las tres páginas a 320, 360, 390, 430, 768, 1024, 1440 y 1920 px con JavaScript activado y desactivado. Comprueba el orden de los enlaces según las secciones reales, los destinos entre marcas, los borradores de contacto y la navegación por teclado. Los enlaces de navegación ofrecen 44 px de altura y el encabezado deja de fijarse cuando queda poca altura visible. Para revisar los estilos, verificá también el zoom al 200 %, el foco y la preferencia de movimiento reducido.

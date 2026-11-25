@@ -1,4 +1,4 @@
-.contact-editor { --accent:#1354ab; margin:1.5rem 0; padding:clamp(1rem,3vw,2rem); border:1px solid #bbcce1; border-radius:1rem; color:#172943; background:#f5f8fc; scroll-margin-block-start:9rem; }
+.contact-editor { --accent:#1354ab; margin:1.5rem 0; padding:clamp(1rem,3vw,2rem); border:1px solid #bbcce1; border-radius:1rem; color:#172943; background:#f5f8fc; }
 .contact-editor[hidden],.contact-editor [hidden] { display:none; }
 .contact-editor h3 { font-size:clamp(1.4rem,3vw,2rem); margin:0 0 .8rem; }
 .contact-editor label { display:grid; gap:.3rem; color:#183453; font-weight:650; }
@@ -20,3 +20,9 @@
 .contact-star .contact-editor { border-top:4px solid #eec038; }
 a[data-compose] { display:inline-block; margin:.45rem .6rem .45rem 0; font-weight:650; text-underline-offset:.2em; }
 .solution-list a[data-compose] { margin:0 1rem 1rem; }
+
+.contact-star .block > .row { align-items:flex-start; flex-wrap:wrap; justify-content:flex-start; gap:.75rem 1.25rem; }
+.contact-star .block > .row > div { flex-basis:100%; }
+.contact-star .block > .row > a { align-self:center; }
+.contact-star .block > .contact-actions a { color:white; background:transparent; border:1px solid #a7c4ff; margin:0; }
+.contact-editor :is(input,textarea,select) { font-size:max(1rem,16px); }
