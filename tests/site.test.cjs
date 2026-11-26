@@ -161,7 +161,17 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
               await page.keyboard.press("Space");
               assert(await detail.locator("p").isHidden());
             }
-            assert.equal(await history.getByText("Consultar publicación original").getAttribute("href"), "https://segu-info.com.ar/boletin/boletin-112-080517");
+            assert.equal(await history.getByText(/IS2ME/i).count(), 0);
+            await page.getByRole("navigation").getByRole("link", {name:"Equipo", exact:true}).click();
+            const profiles = page.locator("#equipo article");
+            assert.deepEqual(await profiles.locator("h3").allTextContents(), ["Esp. Ing. Darío J. Oberto","Martín J. Oberto"]);
+            for (const profile of await profiles.all()) {
+              const summary = profile.locator("summary");
+              await summary.press("Enter");
+              assert(await profile.locator("details p").isVisible());
+              await summary.press("Space");
+              assert(await profile.locator("details p").isHidden());
+            }
             assert.equal(await history.locator("#cluster a").getAttribute("href"), "https://clustersanfrancisco.com.ar/");
             assert.equal(await history.locator('a[href^="https://www.iso.org/"]').count(), 2);
             const cycle = page.locator("#ciclo");
@@ -243,7 +253,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             await editor.locator("summary").click();
             await editor.locator('[data-field^="Nombre"]').fill("Sol & Río");
             if (brand === "Kolossus") {
-              await editor.locator("[data-recipient]").selectOption({label:"Esp. Ing. Darío Julián Oberto"});
+              await editor.locator("[data-recipient]").selectOption({label:"Esp. Ing. Darío Julián Oberto · Dirección e Ingeniería TI"});
               await editor.locator("[data-type]").selectOption("Reunión");
               assert.match(await draft.inputValue(), /coordinar una reunión/);
               assert.equal(new URL(await editor.locator("[data-chat]").getAttribute("href")).pathname, "/5493564663933");
@@ -308,7 +318,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(await page.locator("details[open]").count(), 1);
             await page.getByText("Volver a Star Pulse").click();
             assert.equal(page.url(), base + "starpulse/index.html");
-            await page.locator("footer").getByRole("link", {name:"Inicio conjunto"}).click();
+            await page.locator("footer").getByRole("link", {name:"Inicio",exact:true}).click();
             assert.equal(page.url(),base + "index.html");
           }
         }

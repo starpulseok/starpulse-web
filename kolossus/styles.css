@@ -118,3 +118,11 @@ blockquote { font-size:clamp(1.45rem,2.55vw,2.65rem); line-height:1.32; letter-s
 
 .footer-links { display:flex; flex-wrap:wrap; gap:.25rem 1.2rem; }
 @media (min-width:72rem) { .sector-grid li:first-child { grid-column:span 2; display:flex; align-items:center; gap:1.4rem; } .sector-grid li:first-child svg { flex:none; } }
+
+.equipo { padding-bottom:0; }
+.equipo-perfiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr)); gap:1.25rem; margin-top:1.5rem; }
+.equipo-perfiles article { display:flex; flex-direction:column; gap:1rem; padding:clamp(1.25rem,3vw,2.25rem); border:1px solid #cedbec; border-top:3px solid var(--blue); border-radius:.75rem; background:#f4f7fc; }
+.equipo-perfiles header p { margin-top:.65rem; color:#104486; font-weight:650; }
+.equipo-perfiles header span { color:#40536d; }
+.equipo-perfiles details { border-top:1px solid #bccce0; margin-top:auto; }
+.equipo-perfiles summary { cursor:pointer; color:#104486; font-weight:650; padding-block:.75rem; }

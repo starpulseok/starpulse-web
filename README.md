@@ -75,9 +75,10 @@ starpulse/index.html#quienes presenta la trayectoria de KOLOSSUS desde 2004 y el
 
 La sección `kolossus/index.html#historia` reúne el origen de la consultora, sus aportes profesionales y la vinculación regional. Los detalles se abren con HTML nativo. `kolossus/trayectoria.js` agrega una transición opcional con GSAP que respeta la preferencia de movimiento reducido.
 
-- El aporte histórico sobre IS2ME se documentó en el artículo de Mauro Graziosi, «Implementación práctica de Seguridad en PYMES», publicado el 17 de mayo de 2008. [Boletín 112 de Segu-Info](https://segu-info.com.ar/boletin/boletin-112-080517)
 - Las fichas de ISO distinguen los requisitos del sistema de gestión de las orientaciones sobre controles. Se enlazan como bibliografía. [ISO/IEC 27001:2022](https://www.iso.org/standard/27001) · [ISO/IEC 27002:2022](https://www.iso.org/standard/75652.html)
 - La membresía de KOLOSSUS se puede verificar en el listado de empresas del [Cluster Tecnológico San Francisco](https://clustersanfrancisco.com.ar/).
+
+En `#equipo`, las dos tarjetas presentan función y responsabilidades; los desplegables reúnen la formación pública aprobada. Al recibir retratos profesionales autorizados, podrán incorporarse en el encabezado de cada tarjeta con dimensiones explícitas y su recurso en el inventario. Conservar la misma jerarquía visual entre los dos perfiles.
 
 ## Experiencia empresarial de KOLOSSUS
 
@@ -103,7 +104,7 @@ Las tres páginas contienen noindex, follow en HTML inicial y datos JSON-LD de W
 
 El [manual de mantenimiento](MANTENIMIENTO.md) documenta el inventario de publicación, el plan SEO para uno o varios orígenes, los comandos de empaquetado y verificación, la restauración y las pruebas pendientes en el alojamiento. El [historial de cambios](CHANGELOG.md) reúne los hitos de la candidata.
 
-El logo compacto assets/starpulse-selector.webp deriva del original assets/logo.jpg. La entrada usa CSS para las transiciones de portada y conexión; las páginas internas conservan GSAP y ScrollTrigger locales. El planificador y las pruebas son archivos de mantenimiento que deben excluirse del paquete.
+El logo compacto assets/starpulse-selector.webp deriva del original assets/logo.jpg. La entrada dibuja el fondo de partículas con Canvas 2D nativo y adapta la densidad al tamaño de pantalla. El botón de pausa, la preferencia de movimiento reducido y la visibilidad de la pestaña controlan el bucle de dibujo. Sin JavaScript se muestra el fondo estático en CSS. En ambas marcas, el enlace Inicio del encabezado y del pie vuelve a la entrada compartida. Las páginas internas conservan GSAP y ScrollTrigger locales. El planificador y las pruebas son archivos de mantenimiento que deben excluirse del paquete.
 
 ## Organización visual de ambas marcas
 

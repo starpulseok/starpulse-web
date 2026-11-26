@@ -62,7 +62,9 @@
 
 .header .brand-home .brands a { min-height:44px; }
 .header .joint-link,.header nav a { display:inline-flex; align-items:center; min-height:44px; box-sizing:border-box; }
-.header .joint-link { line-height:1.15; }
+.header .joint-link { line-height:1.15; padding:.4rem .7rem; border:1px solid #bdcede; border-radius:.65rem; background:#f1f5fa; color:#173650; text-decoration:none; font-weight:650; }
+.header .joint-link:is(:hover,:focus-visible) { background:#e4effa; border-color:#527594; }
+footer a:has(.inicio-icono) { padding-inline:.7rem; border:1px solid currentColor; border-radius:.65rem; text-decoration:none; }
 footer a { display:inline-flex; align-items:center; min-height:2.75rem; }
 @media (max-width:50rem) {
   .header .bar { padding-block:.25rem; gap:.15rem; }
@@ -79,3 +81,5 @@ footer a { display:inline-flex; align-items:center; min-height:2.75rem; }
   .header { position:relative; }
   html:root { scroll-padding-top:1rem; }
 }
+
+.inicio-icono { flex:none; margin-inline-end:.35em; }

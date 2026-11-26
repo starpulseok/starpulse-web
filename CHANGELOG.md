@@ -1,5 +1,11 @@
 # Historial de cambios
 
+## Etapa 21C.1 · Actualización institucional y Home compartido
+
+- KOLOSSUS presenta al equipo, su trayectoria y cobertura, y actualiza las cinco áreas de servicio, incluida la conectividad entre sedes y el acceso remoto por VPN.
+- La entrada compartida reúne las marcas sobre un fondo de partículas adaptable. Incluye pausa por teclado, movimiento reducido y una alternativa estática sin JavaScript.
+- Los accesos Inicio de las dos marcas conservan el regreso al Home. Se mantienen la misión, el ciclo de seis etapas y la metodología desplegable.
+
 ## Etapa 21B · Refinamiento visual y organización
 
 - La entrada mejora la legibilidad de las descripciones. Star Pulse agrupa los accesos de exploración y distingue la consulta directa por WhatsApp.
