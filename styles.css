@@ -30,7 +30,12 @@ h1,h2,h3 { line-height: 1.08; letter-spacing: -.045em; margin: 0; }
 h1 { font-size: clamp(3rem,6.9vw,6.8rem); }
 h1 em { color: var(--gold); font-style: normal; }
 .hero p { color: #e1eaff; max-width: 36rem; font-size: 1.15rem; margin-block: 1.5rem 2rem; }
-.actions { flex-wrap: wrap; }
+.actions { flex-direction: column; align-items: flex-start; gap: .65rem; }
+.explore-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem clamp(.65rem, 2vw, 1.4rem); }
+.actions .more { display: inline-flex; align-items: center; gap: .35em; min-height: 44px; }
+@media (max-width: 24rem) {
+  .explore-actions .button { padding-inline: .5rem; }
+}
 .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.1rem; padding: .85rem 1.25rem; border-radius: .55rem; text-decoration: none; font-weight: 700; background: var(--gold); color: #13203d; }
 .button:hover { background: #ffe876; transform: translateY(-2px); }
 .more { font-weight: 600; }

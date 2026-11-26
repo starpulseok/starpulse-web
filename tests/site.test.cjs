@@ -327,8 +327,10 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         await page.keyboard.press("Enter");
         await page.waitForURL(base + "kolossus/index.html#servicios");
         const equipment = page.locator("#servicio-equipamiento");
-        await equipment.locator("summary").focus();
-        await page.keyboard.press("Enter");
+        // La navegación al fragmento puede terminar de posicionar el foco después de la carga.
+        const equipmentSummary = equipment.locator("summary");
+        await equipmentSummary.scrollIntoViewIfNeeded();
+        await equipmentSummary.press("Enter");
         const equipmentLink = equipment.getByRole("link", { name: "Explorar equipamiento en Star Pulse" });
         assert(await equipmentLink.isVisible());
         await equipmentLink.focus();

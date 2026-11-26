@@ -1,5 +1,11 @@
 # Historial de cambios
 
+## Etapa 21B · Refinamiento visual y organización
+
+- La entrada mejora la legibilidad de las descripciones. Star Pulse agrupa los accesos de exploración y distingue la consulta directa por WhatsApp.
+- KOLOSSUS destaca ambas modalidades, conserva la metodología en un desplegable nativo y reorganiza la presentación de sectores y soluciones.
+- Se prepararon plantillas inertes independientes para organizaciones y proyectos, y se estabilizó la prueba de teclado del enlace entre marcas.
+
 ## Cierre local · 20B y 20C
 
 - Inventario público explícito y empaquetado verificable desde Git para preview y producción.

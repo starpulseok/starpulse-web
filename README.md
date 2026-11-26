@@ -104,3 +104,9 @@ Las tres páginas contienen noindex, follow en HTML inicial y datos JSON-LD de W
 El [manual de mantenimiento](MANTENIMIENTO.md) documenta el inventario de publicación, el plan SEO para uno o varios orígenes, los comandos de empaquetado y verificación, la restauración y las pruebas pendientes en el alojamiento. El [historial de cambios](CHANGELOG.md) reúne los hitos de la candidata.
 
 El logo compacto assets/starpulse-selector.webp deriva del original assets/logo.jpg. La entrada usa CSS para las transiciones de portada y conexión; las páginas internas conservan GSAP y ScrollTrigger locales. El planificador y las pruebas son archivos de mantenimiento que deben excluirse del paquete.
+
+## Organización visual de ambas marcas
+
+La entrada conserva las dos tarjetas de marca. En Star Pulse, los accesos al explorador y al catálogo comparten un grupo y el armado por WhatsApp tiene un enlace directo. En KOLOSSUS, el ciclo explica la vida de la infraestructura y las dos modalidades de trabajo preceden a la metodología completa, disponible por teclado y sin JavaScript.
+
+Las plantillas HTML `plantilla-organizaciones` y `plantilla-proyectos` son inertes. La primera reserva una lista común para organizaciones históricas y actuales; la segunda corresponde a proyectos destacados. Incorporar únicamente material autorizado por Martín y Darío y mantener fuera del repositorio los permisos privados. Una plantilla vacía debe permanecer sin renderizar.
