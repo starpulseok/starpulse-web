@@ -6,6 +6,9 @@
 .contact-editor textarea { resize:vertical; }
 .contact-fields,.contact-actions { display:flex; flex-wrap:wrap; gap:.7rem; }
 .contact-fields label { flex:1 1 13rem; }
+/* WebKit propaga el ancho interno de las opciones largas al documento. */
+.contact-fields label:has([data-recipient]) { min-width:0; overflow:clip; overflow-clip-margin:6px; }
+.contact-fields [data-recipient]:focus-visible { outline-offset:-3px; }
 .contact-editor details { margin:1rem 0; }
 .contact-editor summary { cursor:pointer; padding:.6rem 0; font-weight:650; }
 .contact-context { white-space:pre-line; font-weight:650; }
