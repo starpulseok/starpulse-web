@@ -13,6 +13,8 @@ assets/astrapulse/social.png
 assets/hardware/accesorios.webp
 assets/hardware/componentes-384.webp
 assets/hardware/componentes.webp
+assets/hardware/gabinete-astra-384.webp
+assets/hardware/gabinete-astra.webp
 assets/hardware/perifericos.webp
 assets/hardware/workstation-384.webp
 assets/hardware/workstation.webp

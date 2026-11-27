@@ -2,7 +2,9 @@
 
 ## Estado del proyecto · 27 de noviembre de 2026
 
-El último hito de `desarrollo` es el cierre conjunto de las etapas **21C.2 y 21C.3**, el 27 de noviembre de 2026. Star Pulse adoptó la denominación comercial **Astra Pulse**. El catálogo y el explorador Empresa/Persona incluyen Mini PC y consultas por equipamiento por separado.
+El último hito de `desarrollo` es la etapa **21C.4**, del 27 de noviembre de 2026. La portada comercial integra la insignia oficial de Astra Pulse en el panel inferior del gabinete ilustrado. El navegador elige entre las variantes WebP de 384 y 627 px en `assets/hardware/`. El catálogo conserva la ilustración original.
+
+El cierre de las etapas 21C.2 y 21C.3 quedó respaldado en [ad41a2e](https://github.com/starpulseok/starpulse-web/commit/ad41a2e0d8ecf4c16d44118127a01e3ff9427102). Star Pulse adoptó la denominación comercial **Astra Pulse**. El catálogo y el explorador Empresa/Persona incluyen Mini PC y consultas por equipamiento por separado.
 
 **Lanzamiento oficial v1.0.0 pendiente.** Las tres páginas se ofrecen como vista preliminar con `noindex`.
 

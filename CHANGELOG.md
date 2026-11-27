@@ -1,5 +1,9 @@
 # Historial de cambios
 
+## Etapa 21C.4 · Insignia en la portada de Astra Pulse · 27 de noviembre de 2026
+
+- La ilustración principal integra el isotipo y el nombre de Astra Pulse en el panel inferior del gabinete. Se conservan la imagen original y su uso en el catálogo.
+
 ## Etapa 21C.3 · Cambio de identidad a Astra Pulse · 27 de noviembre de 2026
 
 - Star Pulse pasa a denominarse Astra Pulse. Se conservan los nombres de las etapas anteriores como registro histórico.
