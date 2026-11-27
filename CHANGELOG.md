@@ -1,5 +1,17 @@
 # Historial de cambios
 
+## Etapa 21C.3 · Cambio de identidad a Astra Pulse · 27 de noviembre de 2026
+
+- Star Pulse pasa a denominarse Astra Pulse. Se conservan los nombres de las etapas anteriores como registro histórico.
+- Se incorpora el logo oficial y sus variantes en la entrada, los selectores, la portada, los favicons y los metadatos comerciales.
+- La página comercial adopta la ruta `/astrapulse/`. La ruta anterior y los canales operativos mantienen continuidad. Las etapas 21C.2 y 21C.3 se cierran en un único respaldo.
+
+## Etapa 21C.2 · Star Pulse · 27 de noviembre de 2026
+
+- La portada lleva una firma comercial separada de la ilustración. La página de Star Pulse usa una versión compacta del símbolo oficial como favicon.
+- El catálogo incluye equipos de escritorio, notebooks, Mini PC, estaciones de trabajo y equipamiento por separado. Ambos perfiles del explorador ofrecen consultas contextuales de WhatsApp y correo. Cinco actividades comparan también Mini PC.
+- El README reúne el estado, los hitos, la hoja de ruta, las tres páginas y los indicadores automáticos de GitHub. AGENTS.md establece cómo mantener esa información.
+
 ## Etapa 21C.1 · Actualización institucional y Home compartido
 
 - KOLOSSUS presenta al equipo, su trayectoria y cobertura, y actualiza las cinco áreas de servicio, incluida la conectividad entre sedes y el acceso remoto por VPN.

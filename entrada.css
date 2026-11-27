@@ -38,7 +38,7 @@ header p { color:#bed0e8; margin-top:.8rem; font-size:clamp(1rem,2vw,1.3rem); }
 .identity::after { inset:0; background:linear-gradient(90deg,transparent,var(--tone),transparent) center / 100% 1px no-repeat; opacity:.23; }
 .mark { display:grid; grid-template: minmax(0,1fr) / minmax(0,1fr); place-items:center; width:6.8rem; height:6.8rem; border-radius:50%; background:#fff; box-shadow:0 0 0 5px #ffffff0d,0 0 0 6px color-mix(in srgb,var(--accent) 35%,transparent),0 0 40px color-mix(in srgb,var(--tone) 25%,transparent); overflow:hidden; }
 .mark img { display:block; width:auto; height:76%; }
-.star .mark img { height:auto; width:172%; max-width:none; }
+.star .mark img { height:auto; width:86%; }
 .home .copy { padding:0 clamp(1.3rem,3vw,2.5rem) clamp(1.2rem,2.5vw,2rem); }
 .home h2 { line-height:1.08; font-size:clamp(1.75rem,3.1vw,2.8rem); letter-spacing:-.05em; }
 .signature { color:var(--accent); font-size:1rem; font-weight:600; margin:.25rem 0 .75rem; }

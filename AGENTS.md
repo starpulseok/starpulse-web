@@ -1,18 +1,20 @@
-# Star Pulse
+# Astra Pulse
 
-Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas por WhatsApp y facilitar el acceso a KOLOSSUS, marca independiente. El eslogan es «Hardware pensado para vos».
+Página comercial de equipamiento tecnológico, componentes, periféricos y accesorios. Su objetivo es orientar consultas por WhatsApp y facilitar el acceso a KOLOSSUS, marca independiente. El eslogan es «Hardware pensado para vos».
 
 ## Estructura
 
-- index.html es la entrada conjunta de KOLOSSUS y STAR PULSE. entrada.css y entrada.js implementan su presentación y la compatibilidad con marcadores históricos.
-- starpulse/index.html contiene la portada, los servicios de hardware, el contacto y los enlaces comerciales.
-- styles.css define la identidad azul y amarilla y el diseño adaptable.
-- app.js administra aria-current en ambas páginas y, en Star Pulse, la sombra del encabezado y el año del pie. experience.css y motion.js comparten el selector y los efectos de ambas marcas. Respetar movimiento reducido y conservar los avisos de licencia en vendor/gsap.
+- index.html es la entrada conjunta de KOLOSSUS y ASTRA PULSE. entrada.css y entrada.js implementan su presentación y la compatibilidad con marcadores históricos.
+- astrapulse/index.html contiene la portada, los servicios de hardware, el contacto y los enlaces comerciales.
+- styles.css define la paleta de la interfaz y el diseño adaptable. El logo oficial de Astra Pulse conserva el negro y el dorado originales.
+- app.js administra aria-current en ambas páginas y, en Astra Pulse, la sombra del encabezado y el año del pie. experience.css y motion.js comparten el selector y los efectos de ambas marcas. Respetar movimiento reducido y conservar los avisos de licencia en vendor/gsap.
 - assets/ conserva los logos. README.md presenta el proyecto.
 
 - kolossus/index.html y kolossus/styles.css contienen la página institucional y su diseño institucional. Su navegación y sus tarjetas de servicios usan HTML nativo.
 
 ## Mantenimiento
+
+- Con cada hito importante, actualizar el estado al inicio del README, la fecha, el último commit respaldado, la hoja de ruta y el estado del lanzamiento. Registrar el alcance en CHANGELOG.md y distinguir el trabajo local pendiente de los hitos aprobados y respaldados. Verificar los enlaces de preview y los indicadores automáticos al cambiar las rutas o los flujos.
 
 - Trabajar en desarrollo. Modificar main, hacer merge o push requiere autorización. Conservar historial, logos, contenidos y funcionalidades.
 - Escribir en español de Argentina y mantener una estética moderna, tecnológica y profesional. Mantener Kolossus como página empresarial independiente.
@@ -27,3 +29,5 @@ Página comercial de hardware y armado de PCs. Su objetivo es orientar consultas
 - Seguir el flujo de dos computadoras documentado en README.md. Revisar status y actualizar desarrollo con pull --ff-only antes de editar. Compartir trabajo aprobado mediante commits y push a desarrollo.
 - Correr tests/site.test.cjs según README.md. La matriz de .github/workflows/checks.yml solo comprueba el sitio. Mantener las rutas relativas, los cuatro mensajes de WhatsApp y el acceso directo desde Servicios.
 - Revisar foco, contraste, zoom al 200 % y navegación sin JavaScript al cambiar el encabezado. Conservar las URL canónicas, imágenes sociales absolutas y sitemap como pendientes hasta confirmar el alojamiento.
+
+- Conservar el original assets/astrapulse-logo.png y derivar sus variantes sin redibujarlo. Mantener el correo operativo, el remoto y la ruta histórica /starpulse/ hasta que se apruebe su migración.

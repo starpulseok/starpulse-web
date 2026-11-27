@@ -7,7 +7,7 @@ const engines = require("playwright-core");
 
 const root = path.resolve(process.env.SITE_TEST_ROOT || path.join(__dirname, ".."));
 const prefix = process.env.SITE_TEST_PREFIX || "/starpulse-web/";
-const mime = { html: "text/html; charset=utf-8", css: "text/css", js: "text/javascript", png: "image/png", jpg: "image/jpeg", webp: "image/webp" };
+const mime = { html: "text/html; charset=utf-8", css: "text/css", js: "text/javascript", ico: "image/x-icon", png: "image/png", jpg: "image/jpeg", webp: "image/webp" };
 const engine = process.env.BROWSER || "chromium";
 
 test("Navegación de las dos marcas bajo el prefijo del repositorio", async t => {
@@ -34,7 +34,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
   for (const enabled of [false,true]) {
     const audit = await browser.newPage({javaScriptEnabled:enabled, reducedMotion:"reduce"});
     try {
-      for (const [route,type] of [["","WebPage"],["kolossus/","Brand"],["starpulse/","Brand"]]) {
+      for (const [route,type] of [["","WebPage"],["kolossus/","Brand"],["astrapulse/","Brand"]]) {
         const response = await audit.goto(base + route);
         assert.equal(response.status(),200);
         assert.equal(await audit.locator("html").getAttribute("lang"),"es-AR");
@@ -48,10 +48,17 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         }
         assert((await audit.request.get(new URL(await audit.locator('link[rel="icon"]').getAttribute("href"),audit.url()).href)).ok());
       }
+      await audit.goto(base + "starpulse/?perfil=empresa#productos");
+      if (enabled) {
+        await audit.waitForURL(base + "astrapulse/index.html?perfil=empresa#productos");
+      } else {
+        await audit.locator("#productos a").click();
+        await audit.waitForURL(base + "astrapulse/index.html#productos");
+      }
       const missing = await audit.goto(base+"anterior/enlace-inexistente");
       assert.equal(missing.status(),404);
       assert.equal(await audit.locator("h1").innerText(),"Página no encontrada");
-      for (const [label,target] of [["KOLOSSUS","kolossus/index.html"],["Star Pulse","starpulse/index.html"],["Volver al inicio conjunto","index.html"]]) {
+      for (const [label,target] of [["KOLOSSUS","kolossus/index.html"],["Astra Pulse","astrapulse/index.html"],["Volver al inicio conjunto","index.html"]]) {
         const link=audit.getByRole("link",{name:new RegExp(label)});
         assert.equal(await link.evaluate(a=>a.href),base+target);
         assert((await audit.request.get(base+target)).ok());
@@ -74,12 +81,12 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         await page.locator(".joint-link").click();
         await page.waitForURL(base + "index.html");
         await page.goto(base + "#productos");
-        if (javaScriptEnabled) await page.waitForURL(base + "starpulse/index.html#productos");
+        if (javaScriptEnabled) await page.waitForURL(base + "astrapulse/index.html#productos");
         else await page.locator("#productos.legacy").click();
-        assert.equal(page.url(),base + "starpulse/index.html#productos");
+        assert.equal(page.url(),base + "astrapulse/index.html#productos");
         await page.goto(base);
         await page.locator(".portal.star").click();
-        for (const brand of ["Star Pulse", "Kolossus"]) {
+        for (const brand of ["Astra Pulse", "Kolossus"]) {
           assert((await page.title()).toLowerCase().startsWith(brand.toLowerCase()));
           const navLinks = page.locator(".header nav a");
           assert(await navLinks.evaluateAll(links => links.every(a => a.getBoundingClientRect().height >= 44)));
@@ -90,8 +97,8 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           const links = selector.getByRole("link");
           assert.equal(await links.count(), 2);
           assert.equal(await selector.locator('[aria-current="page"]').count(), 1);
-          assert.equal(await links.nth(brand === "Star Pulse" ? 1 : 0).getAttribute("aria-current"), "page");
-          assert(await links.last().getByAltText("Star Pulse").isVisible());
+          assert.equal(await links.nth(brand === "Astra Pulse" ? 1 : 0).getAttribute("aria-current"), "page");
+          assert(await links.last().getByAltText("Astra Pulse").isVisible());
           assert(await links.first().getByAltText("Kolossus").isVisible());
           assert.equal(await page.locator('script[src*="/gsap/"]').count(), 0);
           await page.keyboard.press("Tab");
@@ -107,7 +114,7 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), await page.evaluate(() => JSON.stringify({width: innerWidth, scroll:document.documentElement.scrollWidth, elements:[...document.querySelectorAll("body *")].filter(el => el.getBoundingClientRect().right > innerWidth).map(el => [el.tagName,el.className,Math.round(el.getBoundingClientRect().right)]).slice(0,15)})));
           assert(await page.evaluate(() => [...document.querySelectorAll('a[href^="#"]')]
             .every(a => document.getElementById(a.hash.slice(1)))), brand + ": destino de anclas");
-          if (brand === "Star Pulse") {
+          if (brand === "Astra Pulse") {
             assert.equal(await page.locator(".profile-card").count(), 2);
             assert.equal(await page.locator(".activity-card").count(), 10);
             for (const profile of await page.locator(".profile-card").all()) {
@@ -118,7 +125,17 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
                 await activity.click();
                 const result = page.locator(await activity.getAttribute("href"));
                 assert(await result.isVisible());
-                assert.equal(await result.locator(".alternatives h5").count(), 2);
+                const formats = await result.locator(".alternatives h5").allTextContents();
+                const compact = ["sol-administracion","sol-comercio","sol-instituciones","sol-hogar","sol-estudio"].includes(await result.getAttribute("id"));
+                assert.deepEqual(formats, compact ? ["Escritorio / CPU armada","Notebook","Mini PC"] : ["Escritorio / CPU armada","Notebook"]);
+                const parts = result.locator(".parts-consult");
+                await parts.locator("summary").press("Enter");
+                const wa = new URL(await parts.locator('a[href^="https://wa.me/"]').getAttribute("href"));
+                const mail = new URL(await parts.locator('a[href^="mailto:"]').getAttribute("href"));
+                const body = wa.searchParams.get("text");
+                assert.equal(body,mail.searchParams.get("body"));
+                assert(body.includes("por separado") && body.includes(await result.getAttribute("data-activity")) && body.includes(await result.getAttribute("data-profile")));
+                await parts.locator("summary").press("Space");
               }
             }
             await page.locator(".consult summary").click();
@@ -221,10 +238,10 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
           const editor = page.locator(".contact-editor");
           if (!javaScriptEnabled) {
             assert(await editor.isHidden());
-            const contextual = page.locator(brand === "Star Pulse" ? ".solution [data-compose]" : ".phase [data-compose]").first();
+            const contextual = page.locator(brand === "Astra Pulse" ? ".solution [data-compose]" : ".phase [data-compose]").first();
             const fallback = new URL(await contextual.getAttribute("href"));
             assert.equal(fallback.protocol,"mailto:");
-            assert(fallback.searchParams.get("body").includes(brand === "Star Pulse" ? "Empresa · Administración" : "Necesidad"));
+            assert(fallback.searchParams.get("body").includes(brand === "Astra Pulse" ? "Empresa · Administración" : "Necesidad"));
             assert(await page.locator('#contacto a[href^="mailto:"]').first().isVisible());
             assert(await page.locator('#contacto a[href^="https://wa.me/"]').first().isVisible());
           } else {
@@ -243,13 +260,13 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
                 assert(text.includes(intent) && text.toLowerCase().includes("perfil: " + profile));
               }
             }
-            if (brand === "Star Pulse") await page.locator('.profile-card[href="#perfil-empresa"]').click();
+            if (brand === "Astra Pulse") await page.locator('.profile-card[href="#perfil-empresa"]').click();
             else await page.locator('.cycle-links a[href="#fase-01"]').click();
-            const entry = brand === "Star Pulse" ? page.locator(".solution:visible [data-compose]").first()
+            const entry = brand === "Astra Pulse" ? page.locator(".solution:visible [data-compose]").first()
               : page.locator(".phase:visible [data-compose]");
             await entry.click();
             const draft = editor.locator("[data-draft]");
-            assert.match(await draft.inputValue(), brand === "Star Pulse" ? /Perfil: Empresa.*\nActividad:/ : /Etapa: Necesidad/);
+            assert.match(await draft.inputValue(), brand === "Astra Pulse" ? /Perfil: Empresa.*\nActividad:/ : /Etapa: Necesidad/);
             await editor.locator("summary").click();
             await editor.locator('[data-field^="Nombre"]').fill("Sol & Río");
             if (brand === "Kolossus") {
@@ -283,9 +300,9 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             await page.waitForFunction(() => document.querySelector('nav a[aria-current="location"]')?.hash === location.hash);
             assert.equal(await page.locator('nav [aria-current]').count(), 1);
           }
-          if (brand === "Star Pulse") {
+          if (brand === "Astra Pulse") {
             const categories = page.locator("#productos details");
-            assert.equal(await categories.count(), 3);
+            assert.equal(await categories.count(), 4);
             for (const category of await categories.all()) {
               await category.locator("summary").focus();
               await page.keyboard.press("Enter");
@@ -301,7 +318,11 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             assert.equal(messages.size, 4);
             assert.equal(await page.getByText("Consultar por un armado").getAttribute("href"), await page.locator("#waPC").getAttribute("href"));
             const icon = await page.request.get(new URL(await page.locator('link[rel="icon"]').getAttribute("href"), page.url()).href);
-            assert.equal((await icon.body()).subarray(1,4).toString(), "PNG");
+            const ico = await icon.body();
+            assert.equal(ico.readUInt16LE(2), 1);
+            assert.equal(ico.readUInt16LE(4), 3);
+            assert.deepEqual([6, 22, 38].map(offset => [ico[offset], ico[offset + 1]]),
+              [[16, 16], [32, 32], [48, 48]]);
             await page.locator('a[href="../kolossus/index.html"]').click();
             assert.equal(page.url(), base + "kolossus/index.html");
           } else {
@@ -316,8 +337,8 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
             await page.locator("summary").first().focus();
             await page.keyboard.press("Enter");
             assert.equal(await page.locator("details[open]").count(), 1);
-            await page.getByText("Volver a Star Pulse").click();
-            assert.equal(page.url(), base + "starpulse/index.html");
+            await page.getByText("Volver a Astra Pulse").click();
+            assert.equal(page.url(), base + "astrapulse/index.html");
             await page.locator("footer").getByRole("link", {name:"Inicio",exact:true}).click();
             assert.equal(page.url(),base + "index.html");
           }
@@ -341,11 +362,11 @@ test("Navegación de las dos marcas bajo el prefijo del repositorio", async t =>
         const equipmentSummary = equipment.locator("summary");
         await equipmentSummary.scrollIntoViewIfNeeded();
         await equipmentSummary.press("Enter");
-        const equipmentLink = equipment.getByRole("link", { name: "Explorar equipamiento en Star Pulse" });
+        const equipmentLink = equipment.getByRole("link", { name: "Explorar equipamiento en Astra Pulse" });
         assert(await equipmentLink.isVisible());
         await equipmentLink.focus();
         await page.keyboard.press("Enter");
-        await page.waitForURL(base + "starpulse/index.html#orientador");
+        await page.waitForURL(base + "astrapulse/index.html#orientador");
         assert(await page.locator("#perfil-empresa").isVisible());
         assert.deepEqual(errors, []);
       });
@@ -358,6 +379,7 @@ test("Plan SEO con un origen ficticio y subdirectorio", () => {
   const { productionPlan } = require("../tools/plan-seo.cjs");
   const plan = productionPlan("https://ejemplo.invalid/ensayo/");
   assert.equal(plan.pages.length,3);
+  assert.equal(plan.pages[2].canonical,"https://ejemplo.invalid/ensayo/astrapulse/");
   assert.equal(plan.pages[1].canonical,"https://ejemplo.invalid/ensayo/kolossus/");
   assert.equal(plan.errorBase,"/ensayo/");
   assert.equal((plan.sitemap.match(/<loc>/g)||[]).length,3);
@@ -372,7 +394,7 @@ test("El plan SEO rechaza rutas ambiguas y destinos incompletos", () => {
     assert.throws(() => productionPlan(url));
   }
   const config = { entrada: "https://ejemplo.invalid/", kolossus: "https://ejemplo.invalid/k/",
-                   starpulse: "https://ejemplo.invalid/s/" };
+                   astrapulse: "https://ejemplo.invalid/s/" };
   assert.throws(() => productionPlan(config));
   assert.throws(() => productionPlan({ ...config, imagenConjunta: config.entrada }));
 });

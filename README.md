@@ -1,18 +1,42 @@
-# Star Pulse y Kolossus
+# Astra Pulse y KOLOSSUS
 
-Star Pulse ofrece hardware y armado de PCs a medida. KOLOSSUS Consultoría en TI es una marca independiente. Las dos páginas se sirven como archivos estáticos, incluso bajo el prefijo de un repositorio en GitHub Pages.
+## Estado del proyecto · 27 de noviembre de 2026
+
+El último hito de `desarrollo` es el cierre conjunto de las etapas **21C.2 y 21C.3**, el 27 de noviembre de 2026. Star Pulse adoptó la denominación comercial **Astra Pulse**. El catálogo y el explorador Empresa/Persona incluyen Mini PC y consultas por equipamiento por separado.
+
+**Lanzamiento oficial v1.0.0 pendiente.** Las tres páginas se ofrecen como vista preliminar con `noindex`.
+
+| Acceso | Contenido |
+| --- | --- |
+| [Inicio](https://starpulseok.github.io/starpulse-web/) | Entrada compartida y selección de marca |
+| [KOLOSSUS](https://starpulseok.github.io/starpulse-web/kolossus/) | Ingeniería, infraestructura y consultoría tecnológica |
+| [Astra Pulse](https://starpulseok.github.io/starpulse-web/astrapulse/) | Equipamiento, catálogo y explorador Empresa/Persona |
+
+[![Pruebas de desarrollo](https://github.com/starpulseok/starpulse-web/actions/workflows/checks.yml/badge.svg?branch=desarrollo)](https://github.com/starpulseok/starpulse-web/actions/workflows/checks.yml?query=branch%3Adesarrollo)
+[![Despliegue de la vista preliminar](https://github.com/starpulseok/starpulse-web/actions/workflows/pages/pages-build-deployment/badge.svg?branch=desarrollo)](https://github.com/starpulseok/starpulse-web/actions/workflows/pages/pages-build-deployment)
+
+La [ruta histórica de Star Pulse](https://starpulseok.github.io/starpulse-web/starpulse/) conserva el acceso a Astra Pulse y sus marcadores. Sin JavaScript ofrece un enlace de continuación.
+
+Los indicadores muestran ejecuciones remotas. El primero reúne Chromium, Firefox y WebKit.
+
+## Hoja de ruta
+
+| Hito | Próximo paso |
+| --- | --- |
+| 20D · Infraestructura | Retomar al recibir autorización y las decisiones de alojamiento y dominios. |
+| Lanzamiento v1.0.0 | Validar las URL definitivas, el paquete de producción y la autorización de publicación e indexación. |
 
 ## Estructura
 
-- index.html, entrada.css y entrada.js forman la entrada compartida. Los marcadores de la antigua portada comercial se derivan a starpulse/index.html con el mismo fragmento. Sin JavaScript se ofrece un enlace de continuación.
-- starpulse/index.html y styles.css componen Star Pulse. assets/ conserva los logos originales, la imagen WebP de portada y el favicon derivado del logo oficial.
+- index.html, entrada.css y entrada.js forman la entrada compartida. Los marcadores de la antigua portada comercial se derivan a astrapulse/index.html con el mismo fragmento. Sin JavaScript se ofrece un enlace de continuación.
+- astrapulse/index.html y styles.css componen Astra Pulse. assets/ conserva los logos originales, la imagen WebP de portada y el favicon de la entrada. assets/astrapulse/ contiene las variantes activas y los favicons. La ruta anterior /starpulse/ deriva al nuevo sitio.
 - kolossus/index.html y kolossus/styles.css componen el sitio institucional.
-- app.js sincroniza la navegación activa de ambas páginas. En Star Pulse también actualiza el año y el encabezado.
+- app.js sincroniza la navegación activa de ambas páginas. En Astra Pulse también actualiza el año y el encabezado.
 - tests/site.test.cjs prueba ambas marcas con un servidor local temporal. .github/workflows/checks.yml ejecuta comprobaciones con permisos de lectura.
 
 ## Desarrollo local
 
-Abrí index.html para elegir una marca, o entrá directamente a kolossus/index.html o starpulse/index.html. Para servir el proyecto por HTTP, ejecutá python -m http.server 8000 --bind 127.0.0.1 desde la raíz y visitá http://127.0.0.1:8000/. No hay compilación.
+Abrí index.html para elegir una marca, o entrá directamente a kolossus/index.html o astrapulse/index.html. Para servir el proyecto por HTTP, ejecutá python -m http.server 8000 --bind 127.0.0.1 desde la raíz y visitá http://127.0.0.1:8000/. No hay compilación.
 
 ## Sincronizar dos computadoras
 
@@ -53,13 +77,13 @@ El selector y las tarjetas son implementaciones propias en HTML y CSS. Se evalua
 
 La página institucional utiliza el azul #0866FF, blanco y tonos pizarra. kolossus/logo.webp y kolossus/favicon.png derivan de assets/2024_LOGO_v1.01.png. Los servicios se amplían con details y summary nativos. Los datos de contacto públicos están en el HTML.
 
-## Imágenes de hardware de Star Pulse
+## Imágenes de hardware de Astra Pulse
 
-Los cuatro WebP de assets/hardware/ provienen de una composición original generada con ImageGen para esta página. El encargo visual fue una estación de alto rendimiento sobre azul nocturno, un procesador sobre su placa, teclado con mouse y cables con hub. Se exportó cada cuadrante por separado. Son ilustraciones de categorías y servicios, sin relación con inventario ni instalaciones. El selector conserva el logo original de Star Pulse y usa el nombre recortado del archivo oficial de KOLOSSUS en assets/kolossus-selector.webp. La sección #armado es el punto de integración para un futuro configurador.
+Los cuatro WebP de assets/hardware/ provienen de una composición original generada con ImageGen para esta página. El encargo visual fue una estación de alto rendimiento sobre azul nocturno, un procesador sobre su placa, teclado con mouse y cables con hub. Se exportó cada cuadrante por separado. Son ilustraciones de categorías y servicios, sin relación con inventario ni instalaciones. El selector conserva el logo original de Astra Pulse y usa el nombre recortado del archivo oficial de KOLOSSUS en assets/kolossus-selector.webp. La sección #armado es el punto de integración para un futuro configurador.
 
-## Explorador de Star Pulse
+## Explorador de Astra Pulse
 
-Cada actividad tiene su propia comparación de escritorio y notebook en starpulse/index.html. explore.js muestra el perfil seleccionado y prepara el mensaje editable en memoria. Sin JavaScript, los enlaces del explorador llevan a las alternativas del mismo documento. Las doce escenas WebP de assets/perfiles fueron generadas con ImageGen para ilustrar actividades cotidianas; no identifican instalaciones ni clientes. Las tarjetas de hardware y los recursos oficiales conservan sus procedencias anteriores.
+Cada actividad compara escritorio y notebook. Administración, comercio, instituciones, hogar y estudio también contemplan Mini PC. Cada actividad permite consultar por componentes, monitores, almacenamiento, periféricos, accesorios o conectividad por separado mediante enlaces contextuales de WhatsApp y correo. explore.js muestra el perfil seleccionado y prepara el mensaje editable en memoria. Sin JavaScript, los enlaces del explorador llevan a las alternativas del mismo documento. Las doce escenas WebP de assets/perfiles fueron generadas con ImageGen para ilustrar actividades cotidianas; no identifican instalaciones ni clientes. Las tarjetas de hardware y los recursos oficiales conservan sus procedencias anteriores.
 
 La portada institucional presenta cinco áreas de ingeniería y gestión. Cada tarjeta de KOLOSSUS relaciona una situación empresarial con su alcance y permite preparar una consulta o solicitar una reunión. Los enlaces funcionan sin JavaScript; guide.js permite editar el borrador en la tarjeta sin guardar datos.
 
@@ -69,7 +93,7 @@ Después de los cinco servicios, #ciclo relaciona seis etapas con sus tarjetas d
 
 ## Historia y vínculos entre marcas
 
-starpulse/index.html#quienes presenta la trayectoria de KOLOSSUS desde 2004 y el origen de la identidad STAR PULSE. Dentro del perfil Empresa se puede pasar a kolossus/index.html#servicios. El panel del servicio de provisión de equipamiento devuelve al explorador en starpulse/index.html#orientador. Ambos enlaces son HTML nativo y vinculos.css comparte sus estilos.
+astrapulse/index.html#quienes presenta la trayectoria de KOLOSSUS desde 2004 y el origen de la identidad ASTRA PULSE. Dentro del perfil Empresa se puede pasar a kolossus/index.html#servicios. El panel del servicio de provisión de equipamiento devuelve al explorador en astrapulse/index.html#orientador. Ambos enlaces son HTML nativo y vinculos.css comparte sus estilos.
 
 ## Trayectoria institucional de KOLOSSUS
 
@@ -104,10 +128,10 @@ Las tres páginas contienen noindex, follow en HTML inicial y datos JSON-LD de W
 
 El [manual de mantenimiento](MANTENIMIENTO.md) documenta el inventario de publicación, el plan SEO para uno o varios orígenes, los comandos de empaquetado y verificación, la restauración y las pruebas pendientes en el alojamiento. El [historial de cambios](CHANGELOG.md) reúne los hitos de la candidata.
 
-El logo compacto assets/starpulse-selector.webp deriva del original assets/logo.jpg. La entrada dibuja el fondo de partículas con Canvas 2D nativo y adapta la densidad al tamaño de pantalla. El botón de pausa, la preferencia de movimiento reducido y la visibilidad de la pestaña controlan el bucle de dibujo. Sin JavaScript se muestra el fondo estático en CSS. En ambas marcas, el enlace Inicio del encabezado y del pie vuelve a la entrada compartida. Las páginas internas conservan GSAP y ScrollTrigger locales. El planificador y las pruebas son archivos de mantenimiento que deben excluirse del paquete.
+Las variantes de assets/astrapulse/ derivan de assets/astrapulse-logo.png. La firma sobre fondos oscuros conserva los colores del original mediante un soporte claro. La entrada dibuja el fondo de partículas con Canvas 2D nativo y adapta la densidad al tamaño de pantalla. El botón de pausa, la preferencia de movimiento reducido y la visibilidad de la pestaña controlan el bucle de dibujo. Sin JavaScript se muestra el fondo estático en CSS. En ambas marcas, el enlace Inicio del encabezado y del pie vuelve a la entrada compartida. Las páginas internas conservan GSAP y ScrollTrigger locales. El planificador y las pruebas son archivos de mantenimiento que deben excluirse del paquete.
 
 ## Organización visual de ambas marcas
 
-La entrada conserva las dos tarjetas de marca. En Star Pulse, los accesos al explorador y al catálogo comparten un grupo y el armado por WhatsApp tiene un enlace directo. En KOLOSSUS, el ciclo explica la vida de la infraestructura y las dos modalidades de trabajo preceden a la metodología completa, disponible por teclado y sin JavaScript.
+La entrada conserva las dos tarjetas de marca. En Astra Pulse, los accesos al explorador y al catálogo comparten un grupo y el armado por WhatsApp tiene un enlace directo. En KOLOSSUS, el ciclo explica la vida de la infraestructura y las dos modalidades de trabajo preceden a la metodología completa, disponible por teclado y sin JavaScript.
 
 Las plantillas HTML `plantilla-organizaciones` y `plantilla-proyectos` son inertes. La primera reserva una lista común para organizaciones históricas y actuales; la segunda corresponde a proyectos destacados. Incorporar únicamente material autorizado por Martín y Darío y mantener fuera del repositorio los permisos privados. Una plantilla vacía debe permanecer sin renderizar.

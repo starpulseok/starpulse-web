@@ -18,14 +18,14 @@ function updateChannels() {
   }
   const body = encodeURIComponent(text.toWellFormed());
   wa.href = "https://wa.me/5493564661474?text=" + body;
-  mail.href = "mailto:starpulse.contacto@gmail.com?subject=" + encodeURIComponent("Consulta para Star Pulse") + "&body=" + body;
+  mail.href = "mailto:starpulse.contacto@gmail.com?subject=" + encodeURIComponent("Consulta para Astra Pulse") + "&body=" + body;
 }
 
 function compose() {
   const key = [selected.id, intent, meeting.checked].join("/");
   const { profile, activity } = selected.dataset;
   message.dataset.edited = String(memories.has(key));
-  message.value = memories.get(key) ?? ("Hola, Star Pulse. Quisiera " + intent + " para " + activity + " (perfil " + profile + "). Me interesa comparar alternativas para mi actividad." + (meeting.checked ? " Quisiera coordinar una reunión." : ""));
+  message.value = memories.get(key) ?? ("Hola, Astra Pulse. Quisiera " + intent + " para " + activity + " (perfil " + profile + "). Me interesa comparar alternativas para mi actividad." + (meeting.checked ? " Quisiera coordinar una reunión." : ""));
   intents.forEach(button => button.setAttribute("aria-pressed", button.dataset.intent === intent));
   updateChannels();
 }

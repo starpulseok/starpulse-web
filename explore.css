@@ -21,7 +21,7 @@
 .solution { background:#101e36; color:white; padding:clamp(1.3rem,3vw,2.6rem); border-radius:1rem; margin-block:.85rem; }
 .solution h4 { margin:0; font-size:1.65rem; }
 .solution .tasks { margin:.2rem 0 1rem; color:#d5e5fa; }
-.alternatives { grid-template-columns:1fr 1fr; }
+.alternatives { grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr)); }
 .alternatives div { padding:1rem; background:#213553; border-radius:.55rem; }
 .alternatives h5 { font-size:1.1rem; margin:0; color:#ffda49; }
 .alternatives p,.solution>p:last-child { margin-bottom:0; }
@@ -35,3 +35,7 @@
 .explore :focus-visible { outline:3px solid #b55b0c; outline-offset:3px; }
 @media(max-width:45rem) { .activity-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .profile-grid,.alternatives { grid-template-columns:1fr; } .profile-card { min-height:9rem; } }
 @media(prefers-reduced-motion:no-preference) { .profile-card img,.activity-card img { transition:transform .3s ease; } .profile-card:hover img,.activity-card:hover img { transform:scale(1.035); } .solution:not([hidden]) { animation:explore-in .23s ease-out; } @keyframes explore-in { from { opacity:.8; transform:translateY(4px); } } }
+
+.parts-consult { margin-top:1rem; border-top:1px solid #526680; padding-top:.65rem; }
+.parts-consult summary { cursor:pointer; font-weight:650; padding-block:.45rem; }
+.parts-consult .send a { padding-block:.55rem; }

@@ -97,7 +97,7 @@
       event.preventDefault();
       location.hash = "preparar-consulta";
     }
-    if (!next && brand === "Star Pulse" && !solution && !explorer) next = context;
+    if (!next && brand === "Astra Pulse" && !solution && !explorer) next = context;
     selectContext(next, intent, original);
     const match = solution || (explorer && document.querySelector(".solution:not([hidden])"));
     const hint = card.querySelector("[data-suggestions]");

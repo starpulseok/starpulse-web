@@ -23,7 +23,7 @@ function productionPlan(input) {
   const pages = [
     ["entrada","index.html","",null],
     ["kolossus","kolossus/index.html","kolossus/","kolossus/logo.webp"],
-    ["starpulse","starpulse/index.html","starpulse/","assets/hero-logo.webp"]
+    ["astrapulse","astrapulse/index.html","astrapulse/","assets/astrapulse/social.png"]
   ].map(([key,file,route,image]) => {
     const canonical = single ? new URL(route,base) : httpsUrl(input[key],true);
     return {file,canonical:canonical.href,image};

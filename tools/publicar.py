@@ -1,4 +1,4 @@
-"""Paquetes estáticos de KOLOSSUS y Star Pulse. Solo usa Git y bibliotecas estándar."""
+"""Paquetes estáticos de KOLOSSUS y Astra Pulse. Solo usa Git y bibliotecas estándar."""
 import argparse
 import hashlib
 import html
@@ -15,7 +15,7 @@ from urllib.parse import urljoin, urlsplit, urlunsplit
 
 TOOLS = Path(__file__).resolve().parent
 REPO = TOOLS.parent
-PAGES = ["index.html", "kolossus/index.html", "starpulse/index.html"]
+PAGES = ["index.html", "kolossus/index.html", "astrapulse/index.html"]
 SOURCE = set((TOOLS / "publicacion.txt").read_text().splitlines())
 META = '<meta name="robots" content="noindex, follow">'
 ZIP = "sitio.zip"
@@ -67,14 +67,14 @@ def configure_preview(source, mount):
     text = result["404.html"].decode()
     result["404.html"] = replace_once(text, '<base href="/starpulse-web/">',
                                       '<base href="' + mount_path(mount) + '">').encode()
-    for name in PAGES + ["404.html"]:
+    for name in PAGES + ["404.html", "starpulse/index.html"]:
         require(META in result[name].decode(), "Falta noindex en " + name)
     return result
 
 
 def seo(config):
     require(isinstance(config, dict) and all(isinstance(config.get(key), str) and config[key]
-            for key in ("entrada", "kolossus", "starpulse", "imagenConjunta")),
+            for key in ("entrada", "kolossus", "astrapulse", "imagenConjunta")),
             "Faltan las URL aprobadas de las tres paginas o la imagen conjunta")
     output = subprocess.check_output(["node", str(TOOLS / "plan-seo.cjs"), "--config", "-"],
                                      input=json.dumps(config).encode())
@@ -125,7 +125,7 @@ def configure_production(source, plan):
         folder = urlsplit(origin).netloc + "/"
         base = origin + mount
         assets = folder + mount.lstrip("/")
-        for name in sorted(SOURCE - set(PAGES + ["404.html"])):
+        for name in sorted(SOURCE - set(PAGES + ["404.html", "starpulse/index.html"])):
             put(assets + name, source[name])
         for page in plan["pages"]:
             absolute = page["canonical"]
@@ -143,9 +143,15 @@ def configure_production(source, plan):
                 else:
                     text = text.replace("</head>", "  " + tag + "\n</head>")
             if name != "index.html":
-                text, count = re.subn(r'"logo": "[^"]+"', lambda _: '"logo": ' + json.dumps(image), text)
+                logo = urljoin(base, "assets/astrapulse/horizontal.webp") if name == "astrapulse/index.html" else image
+                text, count = re.subn(r'"logo": "[^"]+"', lambda _: '"logo": ' + json.dumps(logo), text)
                 require(count == 1, "Falta el logo estructurado de " + name)
             put(folder + urlsplit(absolute).path.lstrip("/") + "index.html", text.encode())
+        if urlsplit(origin).netloc == urlsplit(pages["index.html"]).netloc:
+            legacy = "starpulse/index.html"
+            destination = urljoin(pages["index.html"], "starpulse/")
+            redirect = relocate(source[legacy].decode(), legacy, destination, pages, base)
+            put(folder + urlsplit(destination).path.lstrip("/") + "index.html", redirect.encode())
         # El documento de error funciona incluso cuando se sirve desde una URL profunda.
         error = replace_once(source["404.html"].decode(), '<base href="/starpulse-web/">', "")
         error = relocate(error, "404.html", base, pages, base)

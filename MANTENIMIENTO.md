@@ -10,7 +10,7 @@ Usá Git, Node.js 22 y Python 3.9 o posterior. El sitio es estático. Cloná el 
 |---|---|
 | Entrada y enlaces históricos | `index.html`, `entrada.css`, `entrada.js`. Conservá los fragmentos y el enlace alternativo sin JavaScript. |
 | Servicios de KOLOSSUS | Editá las tarjetas HTML en `kolossus/index.html`. Conservá los identificadores usados por navegación, ciclo y orientador. Revisá la correspondencia con `guide.js` y los enlaces de consulta. |
-| Categorías y actividades de Star Pulse | Editá `starpulse/index.html` y las interacciones en `explore.js`. Comprobá el catálogo, ambos perfiles, los anclajes, la comparación y el resumen del mensaje. |
+| Categorías y actividades de Astra Pulse | Editá `astrapulse/index.html` y las interacciones en `explore.js`. Comprobá el catálogo, ambos perfiles, los anclajes, la comparación y el resumen del mensaje. |
 | Textos y contacto | Actualizá el HTML visible y, si corresponde, títulos, metadatos y JSON-LD. Buscá el correo o número anterior en todo el proyecto. Actualizá enlaces directos, borradores y pruebas. Revisá `contacto.js`, `guide.js` y `explore.js`. Usá solo canales aprobados. |
 | Imágenes | Conservá los originales y su procedencia. Ajustá dimensiones, texto alternativo, `srcset` y `sizes` según su uso. Registrá cada nuevo recurso público en `tools/publicacion.txt`. |
 | Presentación compartida | `experience.css`, `motion.js`, `vendor/gsap/`. Conservá versiones compatibles, avisos de licencia y soporte de movimiento reducido. |
@@ -40,7 +40,7 @@ El verificador reconstruye la carga esperada desde Git, compara los bytes, revis
 
 ## Preparar producción después de la aprobación
 
-Acordá las tres URLs HTTPS terminadas en barra, la ubicación de la imagen social conjunta y el permiso de indexación. Prepará un JSON fuera de la raíz pública con las claves `entrada`, `kolossus`, `starpulse` e `imagenConjunta`. Las primeras tres son URLs completas diferentes, que pueden compartir origen. La cuarta debe apuntar al archivo gráfico aprobado y accesible públicamente. El generador referencia esa imagen por URL. Comprobá su respuesta y contenido antes del lanzamiento.
+Acordá las tres URLs HTTPS terminadas en barra, la ubicación de la imagen social conjunta y el permiso de indexación. Prepará un JSON fuera de la raíz pública con las claves `entrada`, `kolossus`, `astrapulse` e `imagenConjunta`. Las primeras tres son URLs completas diferentes, que pueden compartir origen. La cuarta debe apuntar al archivo gráfico aprobado y accesible públicamente. El generador referencia esa imagen por URL. Comprobá su respuesta y contenido antes del lanzamiento.
 
 ```powershell
 $config = Read-Host 'Ruta del JSON con URLs aprobadas'
@@ -64,8 +64,14 @@ Mediciones finales existentes de Lighthouse 13.5.0 sobre HTTP local. Cada celda 
 |---|---|---|
 | Entrada | 100 / 100 | 1,06 / 0,29 |
 | KOLOSSUS | 99 / 100 | 2,16 / 0,56 |
-| Star Pulse | 99 / 100 | 1,89 / 0,47 |
+| Star Pulse (medición histórica) | 99 / 100 | 1,89 / 0,47 |
 
 En las seis mediciones finales, accesibilidad y buenas prácticas obtuvieron 100, SEO 63, CLS 0 y se registraron cero errores de consola. La única comprobación SEO fallida fue la de indexabilidad, esperada por el noindex del preview. Son mediciones de laboratorio, una por combinación en cada estado. La variación de red y equipo afecta los tiempos. La cobertura automática de accesibilidad y seguridad es parcial.
 
 En Maximus quedan pendientes el ensayo en un montaje aislado, restauración, TLS, cabeceras, caché, compresión, MIME, 404 HTTP real, rutas históricas, coexistencia con XOOPS, disponibilidad de la imagen conjunta y rendimiento con la red y configuración efectivas. Revisá canónicas, robots, sitemap y directivas del servidor antes de autorizar la indexación.
+
+## Migración de la ruta comercial
+
+En el preview, `starpulse/index.html` deriva a la página comercial vigente. Con JavaScript conserva la consulta y el fragmento. Sin JavaScript ofrece un enlace al destino y otro a la sección del marcador.
+
+Para el alojamiento definitivo, preparar dos coincidencias exactas en el origen anterior: `/starpulse/` y `/starpulse/index.html`. Ambas deben responder HTTP 301 hacia la URL comercial aprobada, conservando la consulta y sin añadir un fragmento al destino. Adaptar el prefijo si el sitio vive en un subdirectorio. Verificar el encabezado Location y los marcadores antes de habilitar la regla. La redirección HTTP queda pendiente de la aprobación del alojamiento.
